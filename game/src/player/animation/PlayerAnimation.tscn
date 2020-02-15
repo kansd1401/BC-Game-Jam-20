@@ -209,6 +209,7 @@ hframes = 8
 frame = 1
 
 [node name="Jump" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 offset = Vector2( 25, 0 )
 hframes = 25
