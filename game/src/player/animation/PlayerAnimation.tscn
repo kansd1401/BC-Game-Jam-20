@@ -90,6 +90,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 24 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Jump:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 25, 0 ), Vector2( 15, 10 ), Vector2( 0, 20 ), Vector2( -30, 20 ), Vector2( -50, 10 ), Vector2( -67, 0 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "LEAP"
@@ -168,9 +180,10 @@ texture = ExtResource( 3 )
 hframes = 8
 
 [node name="Jump" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 4 )
+offset = Vector2( -67, 0 )
 hframes = 25
+frame = 21
 
 [node name="Attack" type="Sprite" parent="."]
 visible = false

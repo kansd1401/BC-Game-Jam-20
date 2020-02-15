@@ -1,14 +1,16 @@
 extends Node2D
 
-var x
-var y
+var movement = Vector2()
 
 onready var input_buffer = {
 	"input": "",
 	"timer": $Input_Buffer
 }
 
-var current_state = "IDLE"
+var current_state = {
+	"mode": "IDLE",
+	"hitbox_step": 0
+}
 
 export var speed = 1
 
@@ -21,6 +23,10 @@ func init(x, y):
 
 func _process(delta):
 	# Check for input buffer and perform action if state is idle.
+	if current_state == "MOVE_LEFT":
+		print("Moving left boss")
+	if current_state == "MOVE_RIGHT":
+		print("Moving right boss")
 	if input_buffer.input != "" && current_state == "IDLE":
 		pass # Perform buffered action
 
@@ -49,11 +55,20 @@ func _on_Controller_move_left():
 	if current_state != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()
+		return
+	current_state = "MOVE_LEFT"
 
 func _on_Controller_move_right():
 	if current_state != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()
+		return
+	current_state = "MOVE_RIGHT"
 
 func _on_Input_Buffer_timeout():
 	input_buffer.input = ""
+
+
+func _on_Controller_idle():
+	if current_state == "MOVE_LEFT" || current_state == "MOVE_RIGHT":
+		current_state = "IDLE"

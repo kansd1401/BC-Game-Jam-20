@@ -5,18 +5,6 @@ extends Node2D
 
 onready var player = $AnimationPlayer
 
-var animations = {
-	"IDLE": true,
-	"WALK": false,
-	"JUMP": false,
-	"ATTACK": false,
-	"DASH": false,
-	"DEATH": false,
-	"LEAP": false,
-	"SPIN": false,
-	"TAUNT": false
-}
-
 onready var animation_lookup = {
 	"IDLE": $Idle,
 	"WALK": $Walk,
@@ -37,7 +25,7 @@ func _ready():
 
 func play(animation_name):
 	animation_name = animation_name.to_upper()
-	if animations.has(animation_name):
+	if animation_lookup.has(animation_name):
 		_switch_to(animation_name)
 
 func _switch_to(animation_name):
