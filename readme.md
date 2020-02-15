@@ -26,10 +26,10 @@ The hammer sits on the ground for 6 frames before the PC reaches it.
 #### Player Animation Checklist:
 - Idle (DONE)
 - Walk (DONE)
-- Jump 
+- Jump (DONE)
 - Attack (DONE)
 - Dash (DONE)
 - Death (DONE)
 - Leap [Holy Hell]
 - Spin (DONE)
-- Taunt
+- Taunt (DONE)
