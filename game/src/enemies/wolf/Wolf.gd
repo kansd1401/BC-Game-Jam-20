@@ -6,7 +6,7 @@ onready var animation = {
 	"IDLE": $Idle,
 	"RUN": $Run,
 	"ATTACK": $Attack,
-	"Death": $Death
+	"DEATH": $Death
 }
 
 var current_movement = "IDLE"
@@ -16,7 +16,7 @@ func _ready():
 	
 func play(movements):
 	var movement = movements.to_upper()
-	if Input.is_action_pressed("ui_right"):
+	if animation.has(movement):
 		_switch(movement)
 
 func _switch(movement):

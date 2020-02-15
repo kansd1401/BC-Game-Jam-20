@@ -74,11 +74,11 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="Idle" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
 hframes = 12
 
 [node name="Run" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 hframes = 8
 
@@ -86,7 +86,7 @@ hframes = 8
 visible = false
 texture = ExtResource( 2 )
 hframes = 16
-frame = 1
+frame = 11
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
