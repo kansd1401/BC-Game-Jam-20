@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var x
 var y
 
@@ -40,16 +39,21 @@ func _on_Controller_attack():
 		input_buffer.timer.start()
 
 func _on_Controller_jump():
-	pass # Replace with function body.
+	if current_state != "IDLE":
+		input_buffer.input = "JUMP"
+		input_buffer.timer.start()
 
-
+# Movement keys will not buffer, but can be used to reset
+#	the buffer.
 func _on_Controller_move_left():
-	pass # Replace with function body.
-
+	if current_state != "IDLE":
+		input_buffer.input = ""
+		input_buffer.timer.start()
 
 func _on_Controller_move_right():
-	pass # Replace with function body.
-
+	if current_state != "IDLE":
+		input_buffer.input = ""
+		input_buffer.timer.start()
 
 func _on_Input_Buffer_timeout():
 	input_buffer.input = ""
