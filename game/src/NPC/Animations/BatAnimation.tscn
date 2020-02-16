@@ -58,10 +58,9 @@ tracks/0/keys = {
 [node name="BatAnimation" type="Node2D"]
 
 [node name="Flight" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 1 )
 hframes = 8
-frame = 5
+frame = 1
 
 [node name="Attack" type="Sprite" parent="."]
 visible = false
@@ -74,7 +73,6 @@ hframes = 10
 visible = false
 texture = ExtResource( 3 )
 hframes = 10
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 1 )
