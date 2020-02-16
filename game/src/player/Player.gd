@@ -126,7 +126,7 @@ func _on_PlayerAnimation_please_idle():
 	current_attack = 1
 
 func damage_player():
-	pass
+	print("ouch")
 
 
 
