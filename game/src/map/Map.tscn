@@ -7,6 +7,9 @@
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_BackgroundPropsNoBkg_strip.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageOneWayTileSetNoBkg_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageSpikesNoBkg_strip.png" type="Texture" id=8]
+[ext_resource path="res://src/NPC/Witch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/NPC/Wolf.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/map/Sky.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
@@ -1664,7 +1667,7 @@ z_index = 1
 visible = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 0
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -2366,3 +2369,9 @@ one_way_collision_margin = 18.5
 
 [node name="Golem" parent="." instance=ExtResource( 3 )]
 position = Vector2( 451.809, 555.064 )
+
+[node name="Wolf" parent="." instance=ExtResource( 10 )]
+position = Vector2( 892.084, 480.721 )
+
+[node name="Witch" parent="Wolf" instance=ExtResource( 9 )]
+position = Vector2( 1877.44, 351.572 )

@@ -13,6 +13,7 @@ extents = Vector2( 80.3055, 18.975 )
 extents = Vector2( 22.8262, 16.8229 )
 
 [node name="Wolf" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="WolfAnimation" parent="." instance=ExtResource( 2 )]
@@ -35,11 +36,9 @@ wait_time = 6.0
 one_shot = true
 
 [node name="Attack" type="Timer" parent="Timers"]
-wait_time = 1.1
 one_shot = true
 
 [node name="Death" type="Timer" parent="Timers"]
-wait_time = 2.0
 one_shot = true
 
 [node name="Rays" type="Node2D" parent="."]

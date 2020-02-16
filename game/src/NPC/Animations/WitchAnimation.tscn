@@ -78,12 +78,13 @@ tracks/0/keys = {
 visible = false
 texture = ExtResource( 5 )
 hframes = 18
+frame = 17
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
 hframes = 12
-frame = 6
+frame = 11
 
 [node name="IdleE" type="Sprite" parent="."]
 visible = false
