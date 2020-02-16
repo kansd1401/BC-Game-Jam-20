@@ -1,13 +1,518 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg2_strip.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg_strip.png" type="Texture" id=2]
-[ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/NPC/Golem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/NPC/wolf/Wolf.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_BackgroundPropsNoBkg_strip.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=6]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageOneWayTileSetNoBkg_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageSpikesNoBkg_strip.png" type="Texture" id=8]
+
+[sub_resource type="TileSet" id=49]
+0/name = "spr_VillageTileSetNoBkg_strip.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 13, 12, 35, 36 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "spr_VillageTileSetNoBkg_strip.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 80, 12, 32, 36 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "spr_VillageTileSetNoBkg_strip.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 144, 12, 35, 36 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+3/name = "spr_VillageTileSetNoBkg_strip.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 205, 16, 35, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/z_index = 0
+4/name = "spr_VillageTileSetNoBkg_strip.png 4"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 397, 16, 35, 46 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [  ]
+4/z_index = 0
+5/name = "spr_VillageTileSetNoBkg_strip.png 5"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 464, 16, 32, 46 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+5/z_index = 0
+6/name = "spr_VillageTileSetNoBkg_strip.png 6"
+6/texture = ExtResource( 2 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 528, 16, 35, 44 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+6/z_index = 0
+7/name = "spr_VillageTileSetNoBkg_strip.png 7"
+7/texture = ExtResource( 2 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 2957, 12, 38, 48 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+7/z_index = 0
+8/name = "spr_VillageTileSetNoBkg_strip.png 8"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 1229, 13, 32, 47 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shapes = [  ]
+8/z_index = 0
+9/name = "spr_VillageTileSetNoBkg_strip.png 9"
+9/texture = ExtResource( 2 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 1296, 13, 35, 47 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shapes = [  ]
+9/z_index = 0
+10/name = "spr_VillageTileSetNoBkg_strip.png 10"
+10/texture = ExtResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 1040, 13, 32, 51 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+10/z_index = 0
+11/name = "spr_VillageTileSetNoBkg_strip.png 11"
+11/texture = ExtResource( 2 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 2512, 16, 36, 46 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shapes = [  ]
+11/z_index = 0
+12/name = "spr_VillageTileSetNoBkg_strip.png 12"
+12/texture = ExtResource( 2 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 336, 16, 35, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shapes = [  ]
+12/z_index = 0
+13/name = "spr_VillageTileSetNoBkg_strip.png 13"
+13/texture = ExtResource( 2 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 272, 16, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shapes = [  ]
+13/z_index = 0
+14/name = "spr_VillageTileSetNoBkg_strip.png 14"
+14/texture = ExtResource( 2 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 592, 16, 32, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shapes = [  ]
+14/z_index = 0
+15/name = "spr_VillageTileSetNoBkg_strip.png 15"
+15/texture = ExtResource( 2 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 656, 16, 32, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shapes = [  ]
+15/z_index = 0
+16/name = "spr_VillageTileSetNoBkg_strip.png 16"
+16/texture = ExtResource( 2 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 720, 16, 32, 32 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shapes = [  ]
+16/z_index = 0
+17/name = "spr_VillageTileSetNoBkg_strip.png 17"
+17/texture = ExtResource( 2 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 784, 16, 32, 32 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+17/z_index = 0
+18/name = "spr_VillageTileSetNoBkg_strip.png 18"
+18/texture = ExtResource( 2 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 848, 16, 32, 32 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+18/z_index = 0
+19/name = "spr_VillageTileSetNoBkg_strip.png 19"
+19/texture = ExtResource( 2 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 912, 16, 32, 32 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+19/z_index = 0
+20/name = "spr_VillageTileSetNoBkg_strip.png 20"
+20/texture = ExtResource( 2 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 973, 16, 38, 32 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shapes = [  ]
+20/z_index = 0
+21/name = "spr_VillageTileSetNoBkg_strip.png 21"
+21/texture = ExtResource( 2 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 1101, 12, 38, 36 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+21/z_index = 0
+22/name = "spr_VillageTileSetNoBkg_strip.png 22"
+22/texture = ExtResource( 2 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 1165, 16, 38, 44 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shapes = [  ]
+22/z_index = 0
+23/name = "spr_VillageTileSetNoBkg_strip.png 23"
+23/texture = ExtResource( 2 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 1360, 12, 32, 36 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shapes = [  ]
+23/z_index = 0
+24/name = "spr_VillageTileSetNoBkg_strip.png 24"
+24/texture = ExtResource( 2 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 1424, 16, 32, 32 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/shapes = [  ]
+24/z_index = 0
+25/name = "spr_VillageTileSetNoBkg_strip.png 25"
+25/texture = ExtResource( 2 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 1488, 16, 35, 32 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 0, 0 )
+25/navigation_offset = Vector2( 0, 0 )
+25/shapes = [  ]
+25/z_index = 0
+26/name = "spr_VillageTileSetNoBkg_strip.png 26"
+26/texture = ExtResource( 2 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 1549, 16, 35, 32 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shapes = [  ]
+26/z_index = 0
+27/name = "spr_VillageTileSetNoBkg_strip.png 27"
+27/texture = ExtResource( 2 )
+27/tex_offset = Vector2( 0, 0 )
+27/modulate = Color( 1, 1, 1, 1 )
+27/region = Rect2( 1616, 16, 32, 32 )
+27/tile_mode = 0
+27/occluder_offset = Vector2( 0, 0 )
+27/navigation_offset = Vector2( 0, 0 )
+27/shapes = [  ]
+27/z_index = 0
+28/name = "spr_VillageTileSetNoBkg_strip.png 28"
+28/texture = ExtResource( 2 )
+28/tex_offset = Vector2( 0, 0 )
+28/modulate = Color( 1, 1, 1, 1 )
+28/region = Rect2( 1680, 16, 32, 32 )
+28/tile_mode = 0
+28/occluder_offset = Vector2( 0, 0 )
+28/navigation_offset = Vector2( 0, 0 )
+28/shapes = [  ]
+28/z_index = 0
+29/name = "spr_VillageTileSetNoBkg_strip.png 29"
+29/texture = ExtResource( 2 )
+29/tex_offset = Vector2( 0, 0 )
+29/modulate = Color( 1, 1, 1, 1 )
+29/region = Rect2( 1744, 16, 32, 32 )
+29/tile_mode = 0
+29/occluder_offset = Vector2( 0, 0 )
+29/navigation_offset = Vector2( 0, 0 )
+29/shapes = [  ]
+29/z_index = 0
+30/name = "spr_VillageTileSetNoBkg_strip.png 30"
+30/texture = ExtResource( 2 )
+30/tex_offset = Vector2( 0, 0 )
+30/modulate = Color( 1, 1, 1, 1 )
+30/region = Rect2( 1808, 16, 32, 32 )
+30/tile_mode = 0
+30/occluder_offset = Vector2( 0, 0 )
+30/navigation_offset = Vector2( 0, 0 )
+30/shapes = [  ]
+30/z_index = 0
+31/name = "spr_VillageTileSetNoBkg_strip.png 31"
+31/texture = ExtResource( 2 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 1872, 16, 32, 32 )
+31/tile_mode = 0
+31/occluder_offset = Vector2( 0, 0 )
+31/navigation_offset = Vector2( 0, 0 )
+31/shapes = [  ]
+31/z_index = 0
+32/name = "spr_VillageTileSetNoBkg_strip.png 32"
+32/texture = ExtResource( 2 )
+32/tex_offset = Vector2( 0, 0 )
+32/modulate = Color( 1, 1, 1, 1 )
+32/region = Rect2( 1936, 16, 32, 32 )
+32/tile_mode = 0
+32/occluder_offset = Vector2( 0, 0 )
+32/navigation_offset = Vector2( 0, 0 )
+32/shapes = [  ]
+32/z_index = 0
+33/name = "spr_VillageTileSetNoBkg_strip.png 33"
+33/texture = ExtResource( 2 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 2000, 16, 32, 32 )
+33/tile_mode = 0
+33/occluder_offset = Vector2( 0, 0 )
+33/navigation_offset = Vector2( 0, 0 )
+33/shapes = [  ]
+33/z_index = 0
+34/name = "spr_VillageTileSetNoBkg_strip.png 34"
+34/texture = ExtResource( 2 )
+34/tex_offset = Vector2( 0, 0 )
+34/modulate = Color( 1, 1, 1, 1 )
+34/region = Rect2( 2064, 16, 32, 32 )
+34/tile_mode = 0
+34/occluder_offset = Vector2( 0, 0 )
+34/navigation_offset = Vector2( 0, 0 )
+34/shapes = [  ]
+34/z_index = 0
+35/name = "spr_VillageTileSetNoBkg_strip.png 35"
+35/texture = ExtResource( 2 )
+35/tex_offset = Vector2( 0, 0 )
+35/modulate = Color( 1, 1, 1, 1 )
+35/region = Rect2( 2128, 16, 32, 32 )
+35/tile_mode = 0
+35/occluder_offset = Vector2( 0, 0 )
+35/navigation_offset = Vector2( 0, 0 )
+35/shapes = [  ]
+35/z_index = 0
+36/name = "spr_VillageTileSetNoBkg_strip.png 36"
+36/texture = ExtResource( 2 )
+36/tex_offset = Vector2( 0, 0 )
+36/modulate = Color( 1, 1, 1, 1 )
+36/region = Rect2( 2192, 16, 32, 48 )
+36/tile_mode = 0
+36/occluder_offset = Vector2( 0, 0 )
+36/navigation_offset = Vector2( 0, 0 )
+36/shapes = [  ]
+36/z_index = 0
+37/name = "spr_VillageTileSetNoBkg_strip.png 37"
+37/texture = ExtResource( 2 )
+37/tex_offset = Vector2( 0, 0 )
+37/modulate = Color( 1, 1, 1, 1 )
+37/region = Rect2( 2252, 16, 36, 32 )
+37/tile_mode = 0
+37/occluder_offset = Vector2( 0, 0 )
+37/navigation_offset = Vector2( 0, 0 )
+37/shapes = [  ]
+37/z_index = 0
+38/name = "spr_VillageTileSetNoBkg_strip.png 38"
+38/texture = ExtResource( 2 )
+38/tex_offset = Vector2( 0, 0 )
+38/modulate = Color( 1, 1, 1, 1 )
+38/region = Rect2( 2320, 12, 32, 36 )
+38/tile_mode = 0
+38/occluder_offset = Vector2( 0, 0 )
+38/navigation_offset = Vector2( 0, 0 )
+38/shapes = [  ]
+38/z_index = 0
+39/name = "spr_VillageTileSetNoBkg_strip.png 39"
+39/texture = ExtResource( 2 )
+39/tex_offset = Vector2( 0, 0 )
+39/modulate = Color( 1, 1, 1, 1 )
+39/region = Rect2( 2384, 16, 36, 32 )
+39/tile_mode = 0
+39/occluder_offset = Vector2( 0, 0 )
+39/navigation_offset = Vector2( 0, 0 )
+39/shapes = [  ]
+39/z_index = 0
+40/name = "spr_VillageTileSetNoBkg_strip.png 40"
+40/texture = ExtResource( 2 )
+40/tex_offset = Vector2( 0, 0 )
+40/modulate = Color( 1, 1, 1, 1 )
+40/region = Rect2( 2448, 12, 36, 36 )
+40/tile_mode = 0
+40/occluder_offset = Vector2( 0, 0 )
+40/navigation_offset = Vector2( 0, 0 )
+40/shapes = [  ]
+40/z_index = 0
+41/name = "spr_VillageTileSetNoBkg_strip.png 41"
+41/texture = ExtResource( 2 )
+41/tex_offset = Vector2( 0, 0 )
+41/modulate = Color( 1, 1, 1, 1 )
+41/region = Rect2( 2572, 16, 36, 46 )
+41/tile_mode = 0
+41/occluder_offset = Vector2( 0, 0 )
+41/navigation_offset = Vector2( 0, 0 )
+41/shapes = [  ]
+41/z_index = 0
+42/name = "spr_VillageTileSetNoBkg_strip.png 42"
+42/texture = ExtResource( 2 )
+42/tex_offset = Vector2( 0, 0 )
+42/modulate = Color( 1, 1, 1, 1 )
+42/region = Rect2( 2636, 12, 36, 36 )
+42/tile_mode = 0
+42/occluder_offset = Vector2( 0, 0 )
+42/navigation_offset = Vector2( 0, 0 )
+42/shapes = [  ]
+42/z_index = 0
+43/name = "spr_VillageTileSetNoBkg_strip.png 43"
+43/texture = ExtResource( 2 )
+43/tex_offset = Vector2( 0, 0 )
+43/modulate = Color( 1, 1, 1, 1 )
+43/region = Rect2( 2704, 16, 32, 46 )
+43/tile_mode = 0
+43/occluder_offset = Vector2( 0, 0 )
+43/navigation_offset = Vector2( 0, 0 )
+43/shapes = [  ]
+43/z_index = 0
+44/name = "spr_VillageTileSetNoBkg_strip.png 44"
+44/texture = ExtResource( 2 )
+44/tex_offset = Vector2( 0, 0 )
+44/modulate = Color( 1, 1, 1, 1 )
+44/region = Rect2( 2764, 16, 36, 32 )
+44/tile_mode = 0
+44/occluder_offset = Vector2( 0, 0 )
+44/navigation_offset = Vector2( 0, 0 )
+44/shapes = [  ]
+44/z_index = 0
+45/name = "spr_VillageTileSetNoBkg_strip.png 45"
+45/texture = ExtResource( 2 )
+45/tex_offset = Vector2( 0, 0 )
+45/modulate = Color( 1, 1, 1, 1 )
+45/region = Rect2( 2832, 12, 32, 36 )
+45/tile_mode = 0
+45/occluder_offset = Vector2( 0, 0 )
+45/navigation_offset = Vector2( 0, 0 )
+45/shapes = [  ]
+45/z_index = 0
+46/name = "spr_VillageTileSetNoBkg_strip.png 46"
+46/texture = ExtResource( 2 )
+46/tex_offset = Vector2( 0, 0 )
+46/modulate = Color( 1, 1, 1, 1 )
+46/region = Rect2( 2896, 16, 36, 32 )
+46/tile_mode = 0
+46/occluder_offset = Vector2( 0, 0 )
+46/navigation_offset = Vector2( 0, 0 )
+46/shapes = [  ]
+46/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=50]
+extents = Vector2( 23.455, 315.214 )
+
+[sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 508.257, 22.4186 )
+
+[sub_resource type="RectangleShape2D" id=52]
+extents = Vector2( 254.198, 21.1827 )
+
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 173.708, 28.6953 )
+
+[sub_resource type="RectangleShape2D" id=54]
+extents = Vector2( 80.9203, 24.8204 )
+
+[sub_resource type="RectangleShape2D" id=55]
+extents = Vector2( 48.5476, 44.3945 )
+
+[sub_resource type="RectangleShape2D" id=56]
+extents = Vector2( 21.4449, 162.592 )
+
+[sub_resource type="RectangleShape2D" id=65]
+extents = Vector2( 45.7518, 76.0888 )
+
+[sub_resource type="RectangleShape2D" id=66]
+extents = Vector2( 40.8455, 15.4445 )
+
+[sub_resource type="RectangleShape2D" id=67]
+extents = Vector2( 17.2147, 45.3447 )
+
+[sub_resource type="RectangleShape2D" id=68]
+extents = Vector2( 63.3508, 17.1311 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
@@ -904,923 +1409,28 @@ points = PoolVector2Array( 3.05176e-05, 0, 3.05176e-05, 0, 3.05176e-05, 0, 3.051
 } ]
 46/z_index = 0
 
-[sub_resource type="ConvexPolygonShape2D" id=49]
-points = PoolVector2Array( 35, 36, 3.03902, 36, 3.03902, 4.06926, 35, 4.06926 )
-
-[sub_resource type="ConvexPolygonShape2D" id=50]
-points = PoolVector2Array( 32, 36, 0.143524, 36, 0, 4.10389, 32, 4.18177 )
-
-[sub_resource type="ConvexPolygonShape2D" id=51]
-points = PoolVector2Array( 32, 34.9482, 0.0599365, 34.9482, 0, 3.11006, 31.9833, 3.11006 )
-
-[sub_resource type="ConvexPolygonShape2D" id=52]
-points = PoolVector2Array( 31.8857, 31.7382, 0, 31.7382, 0, 0.110062, 31.8857, 0.110062 )
-
-[sub_resource type="ConvexPolygonShape2D" id=53]
-points = PoolVector2Array( 31.7939, 32, 0.16571, 32, 0.16571, 0.241623, 31.7939, 0.241623 )
-
-[sub_resource type="ConvexPolygonShape2D" id=54]
-points = PoolVector2Array( 32, 32, 0.0878601, 32, 0.0878601, 0.0173035, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=55]
-points = PoolVector2Array( 32, 32, 0.346252, 32, 0.0622559, 0.106422, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=56]
-points = PoolVector2Array( 32, 31.8692, 0.247253, 31.8692, 0.247253, 0, 32, 0 )
-
 [sub_resource type="ConvexPolygonShape2D" id=57]
-points = PoolVector2Array( 32, 32, 0.132812, 32, 0, 0, 31.761, 0 )
+points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=58]
-points = PoolVector2Array( 32, 32, 0.149536, 32, 0.149536, 0.375603, 32, 0.375603 )
+points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=59]
-points = PoolVector2Array( 32, 32, 0.317688, 32, 0.317688, 0.375603, 32, 0.375603 )
+points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=60]
-points = PoolVector2Array( 32, 32, 0.179626, 32, 0.179626, 0.375603, 32, 0.375603 )
+points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=61]
-points = PoolVector2Array( 32.039, 36, 0.105499, 36, 0.105499, 4.14715, 32.039, 4.14715 )
-
-[sub_resource type="ConvexPolygonShape2D" id=62]
-points = PoolVector2Array( 34.7472, 31.7346, 3.25366, 31.7346, 3.25366, 0.510193, 34.7472, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=63]
-points = PoolVector2Array( 35.218, 36, 2.64783, 36, 2.64783, 4.51019, 35.218, 4.51019 )
-
-[sub_resource type="ConvexPolygonShape2D" id=64]
-points = PoolVector2Array( 34.7201, 32.4075, 3.63037, 32.4075, 3.63037, 0.375603, 34.7201, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=65]
-points = PoolVector2Array( 32, 36, 0.000854492, 36, 0.000854492, 4.10642, 32, 4.10642 )
-
-[sub_resource type="ConvexPolygonShape2D" id=66]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=67]
-points = PoolVector2Array( 31.5413, 32, 0.0477295, 32, 0.0477295, 0.510193, 31.5413, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=68]
-points = PoolVector2Array( 35, 32, 3.38745, 32, 3.38745, 0.510193, 35, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=69]
-points = PoolVector2Array( 32, 32, 0.0980225, 32, 0.0980225, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=70]
-points = PoolVector2Array( 32, 32, 0.0273438, 32, 0.0273438, 0.510193, 32, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=71]
-points = PoolVector2Array( 32, 32, 0.0273438, 32, 0.0273438, 0, 32, 0.241013 )
-
-[sub_resource type="ConvexPolygonShape2D" id=72]
-points = PoolVector2Array( 35, 32, 2.99036, 32, 2.99036, 0, 35, 0.147148 )
-
-[sub_resource type="ConvexPolygonShape2D" id=73]
-points = PoolVector2Array( 32, 32, 0.175293, 32, 0.175293, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=74]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0.241013, 32, 0.241013 )
-
-[sub_resource type="ConvexPolygonShape2D" id=75]
-points = PoolVector2Array( 32, 32, 0.165039, 32, 0.165039, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=76]
-points = PoolVector2Array( 32, 32, 0.00341797, 32, 0.00341797, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=77]
-points = PoolVector2Array( 32, 32, 0.0673828, 32, 0.0673828, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=78]
-points = PoolVector2Array( 32, 31.7346, 0, 31.7346, 0, 0.375603, 32, 0.375603 )
-
-[sub_resource type="ConvexPolygonShape2D" id=79]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 31.7346, 0.22876, 31.7346 )
-
-[sub_resource type="ConvexPolygonShape2D" id=80]
-points = PoolVector2Array( 36, 31.8692, 4.15796, 31.8692, 4.15796, 0.510193, 36, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=81]
-points = PoolVector2Array( 32, 36, 0.137451, 36, 0.137451, 4.37923, 32, 4.37923 )
-
-[sub_resource type="ConvexPolygonShape2D" id=82]
-points = PoolVector2Array( 32.0986, 32, 0, 32, 0, 0.379234, 32.0986, 0.379234 )
-
-[sub_resource type="ConvexPolygonShape2D" id=83]
-points = PoolVector2Array( 35, 31.977, 3.06787, 31.977, 3.06787, 0, 35, 0.0123863 )
-
-[sub_resource type="ConvexPolygonShape2D" id=84]
-points = PoolVector2Array( 31.7119, 35.7346, 0, 35.7346, 0, 4.64478, 31.7119, 4.64478 )
-
-[sub_resource type="ConvexPolygonShape2D" id=85]
-points = PoolVector2Array( 36, 32.2729, 4.0061, 32.2729, 4.0061, 0.510193, 36, 0.510193 )
-
-[sub_resource type="ConvexPolygonShape2D" id=86]
-points = PoolVector2Array( 36, 36, 4.03296, 36, 4.03296, 4.10642, 36, 4.10642 )
-
-[sub_resource type="ConvexPolygonShape2D" id=87]
-points = PoolVector2Array( 32, 31.6, 0.0966797, 31.6, 0.231201, 0.106422, 32, 0.106422 )
-
-[sub_resource type="ConvexPolygonShape2D" id=88]
-points = PoolVector2Array( 36, 32, 4.18408, 32, 4.18408, 0.644775, 36, 0.644775 )
-
-[sub_resource type="ConvexPolygonShape2D" id=89]
-points = PoolVector2Array( 32, 36, 0.113525, 36, 0.113525, 4.3756, 32, 4.3756 )
-
-[sub_resource type="ConvexPolygonShape2D" id=90]
-points = PoolVector2Array( 32.2834, 32, 0.116943, 32, 0.116943, 0.644775, 32.2834, 0.644775 )
-
-[sub_resource type="ConvexPolygonShape2D" id=91]
-points = PoolVector2Array( 32, 31.9476, 0.0158081, 31.9476, 0, 0.0764122, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=92]
-points = PoolVector2Array( 32.2649, 31.849, 0.113342, 31.849, 0, 0, 32.078, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=93]
-points = PoolVector2Array( 34.8899, 35.8728, 3.1272, 36.142, 3.26172, 4.11006, 34.7554, 3.97547 )
-
-[sub_resource type="ConvexPolygonShape2D" id=94]
-points = PoolVector2Array( 32, 34.7382, 2.80139, 34.7382, 2.80139, 2.43712, 32, 2.67857 )
-
-[sub_resource type="ConvexPolygonShape2D" id=95]
-points = PoolVector2Array( 31.7087, 35.0074, 0.215088, 34.7382, 0.0805664, 3.24465, 31.7087, 3.37923 )
-
-[sub_resource type="TileSet" id=96]
-0/name = "spr_VillageTileSetNoBkg_strip.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 13, 12, 35, 36 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 49 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "spr_VillageTileSetNoBkg_strip.png 1"
-1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 80, 12, 32, 36 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 50 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
-2/name = "spr_VillageTileSetNoBkg_strip.png 2"
-2/texture = ExtResource( 2 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 144, 12, 35, 36 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 61 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
-3/name = "spr_VillageTileSetNoBkg_strip.png 3"
-3/texture = ExtResource( 2 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 205, 16, 35, 32 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 72 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-3/z_index = 0
-4/name = "spr_VillageTileSetNoBkg_strip.png 4"
-4/texture = ExtResource( 2 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 397, 16, 35, 46 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 83 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-4/z_index = 0
-5/name = "spr_VillageTileSetNoBkg_strip.png 5"
-5/texture = ExtResource( 2 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 464, 16, 32, 46 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 91 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-5/z_index = 0
-6/name = "spr_VillageTileSetNoBkg_strip.png 6"
-6/texture = ExtResource( 2 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 528, 16, 35, 44 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 92 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-6/z_index = 0
-7/name = "spr_VillageTileSetNoBkg_strip.png 7"
-7/texture = ExtResource( 2 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 2957, 12, 38, 48 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 93 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-7/z_index = 0
-8/name = "spr_VillageTileSetNoBkg_strip.png 8"
-8/texture = ExtResource( 2 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 1229, 13, 32, 47 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 94 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-8/z_index = 0
-9/name = "spr_VillageTileSetNoBkg_strip.png 9"
-9/texture = ExtResource( 2 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 1296, 13, 35, 47 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 95 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-9/z_index = 0
-10/name = "spr_VillageTileSetNoBkg_strip.png 10"
-10/texture = ExtResource( 2 )
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 1040, 13, 32, 51 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 51 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-10/z_index = 0
-11/name = "spr_VillageTileSetNoBkg_strip.png 11"
-11/texture = ExtResource( 2 )
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 2512, 16, 36, 46 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 52 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-11/z_index = 0
-12/name = "spr_VillageTileSetNoBkg_strip.png 12"
-12/texture = ExtResource( 2 )
-12/tex_offset = Vector2( 0, 0 )
-12/modulate = Color( 1, 1, 1, 1 )
-12/region = Rect2( 336, 16, 35, 32 )
-12/tile_mode = 0
-12/occluder_offset = Vector2( 0, 0 )
-12/navigation_offset = Vector2( 0, 0 )
-12/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 53 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-12/z_index = 0
-13/name = "spr_VillageTileSetNoBkg_strip.png 13"
-13/texture = ExtResource( 2 )
-13/tex_offset = Vector2( 0, 0 )
-13/modulate = Color( 1, 1, 1, 1 )
-13/region = Rect2( 272, 16, 32, 32 )
-13/tile_mode = 0
-13/occluder_offset = Vector2( 0, 0 )
-13/navigation_offset = Vector2( 0, 0 )
-13/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 54 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-13/z_index = 0
-14/name = "spr_VillageTileSetNoBkg_strip.png 14"
-14/texture = ExtResource( 2 )
-14/tex_offset = Vector2( 0, 0 )
-14/modulate = Color( 1, 1, 1, 1 )
-14/region = Rect2( 592, 16, 32, 32 )
-14/tile_mode = 0
-14/occluder_offset = Vector2( 0, 0 )
-14/navigation_offset = Vector2( 0, 0 )
-14/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 55 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-14/z_index = 0
-15/name = "spr_VillageTileSetNoBkg_strip.png 15"
-15/texture = ExtResource( 2 )
-15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 656, 16, 32, 32 )
-15/tile_mode = 0
-15/occluder_offset = Vector2( 0, 0 )
-15/navigation_offset = Vector2( 0, 0 )
-15/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 56 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-15/z_index = 0
-16/name = "spr_VillageTileSetNoBkg_strip.png 16"
-16/texture = ExtResource( 2 )
-16/tex_offset = Vector2( 0, 0 )
-16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 720, 16, 32, 32 )
-16/tile_mode = 0
-16/occluder_offset = Vector2( 0, 0 )
-16/navigation_offset = Vector2( 0, 0 )
-16/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 57 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-16/z_index = 0
-17/name = "spr_VillageTileSetNoBkg_strip.png 17"
-17/texture = ExtResource( 2 )
-17/tex_offset = Vector2( 0, 0 )
-17/modulate = Color( 1, 1, 1, 1 )
-17/region = Rect2( 784, 16, 32, 32 )
-17/tile_mode = 0
-17/occluder_offset = Vector2( 0, 0 )
-17/navigation_offset = Vector2( 0, 0 )
-17/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 58 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-17/z_index = 0
-18/name = "spr_VillageTileSetNoBkg_strip.png 18"
-18/texture = ExtResource( 2 )
-18/tex_offset = Vector2( 0, 0 )
-18/modulate = Color( 1, 1, 1, 1 )
-18/region = Rect2( 848, 16, 32, 32 )
-18/tile_mode = 0
-18/occluder_offset = Vector2( 0, 0 )
-18/navigation_offset = Vector2( 0, 0 )
-18/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 59 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-18/z_index = 0
-19/name = "spr_VillageTileSetNoBkg_strip.png 19"
-19/texture = ExtResource( 2 )
-19/tex_offset = Vector2( 0, 0 )
-19/modulate = Color( 1, 1, 1, 1 )
-19/region = Rect2( 912, 16, 32, 32 )
-19/tile_mode = 0
-19/occluder_offset = Vector2( 0, 0 )
-19/navigation_offset = Vector2( 0, 0 )
-19/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 60 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-19/z_index = 0
-20/name = "spr_VillageTileSetNoBkg_strip.png 20"
-20/texture = ExtResource( 2 )
-20/tex_offset = Vector2( 0, 0 )
-20/modulate = Color( 1, 1, 1, 1 )
-20/region = Rect2( 973, 16, 38, 32 )
-20/tile_mode = 0
-20/occluder_offset = Vector2( 0, 0 )
-20/navigation_offset = Vector2( 0, 0 )
-20/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 62 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-20/z_index = 0
-21/name = "spr_VillageTileSetNoBkg_strip.png 21"
-21/texture = ExtResource( 2 )
-21/tex_offset = Vector2( 0, 0 )
-21/modulate = Color( 1, 1, 1, 1 )
-21/region = Rect2( 1101, 12, 38, 36 )
-21/tile_mode = 0
-21/occluder_offset = Vector2( 0, 0 )
-21/navigation_offset = Vector2( 0, 0 )
-21/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 63 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-21/z_index = 0
-22/name = "spr_VillageTileSetNoBkg_strip.png 22"
-22/texture = ExtResource( 2 )
-22/tex_offset = Vector2( 0, 0 )
-22/modulate = Color( 1, 1, 1, 1 )
-22/region = Rect2( 1165, 16, 38, 44 )
-22/tile_mode = 0
-22/occluder_offset = Vector2( 0, 0 )
-22/navigation_offset = Vector2( 0, 0 )
-22/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 64 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-22/z_index = 0
-23/name = "spr_VillageTileSetNoBkg_strip.png 23"
-23/texture = ExtResource( 2 )
-23/tex_offset = Vector2( 0, 0 )
-23/modulate = Color( 1, 1, 1, 1 )
-23/region = Rect2( 1360, 12, 32, 36 )
-23/tile_mode = 0
-23/occluder_offset = Vector2( 0, 0 )
-23/navigation_offset = Vector2( 0, 0 )
-23/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 65 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-23/z_index = 0
-24/name = "spr_VillageTileSetNoBkg_strip.png 24"
-24/texture = ExtResource( 2 )
-24/tex_offset = Vector2( 0, 0 )
-24/modulate = Color( 1, 1, 1, 1 )
-24/region = Rect2( 1424, 16, 32, 32 )
-24/tile_mode = 0
-24/occluder_offset = Vector2( 0, 0 )
-24/navigation_offset = Vector2( 0, 0 )
-24/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 66 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-24/z_index = 0
-25/name = "spr_VillageTileSetNoBkg_strip.png 25"
-25/texture = ExtResource( 2 )
-25/tex_offset = Vector2( 0, 0 )
-25/modulate = Color( 1, 1, 1, 1 )
-25/region = Rect2( 1488, 16, 35, 32 )
-25/tile_mode = 0
-25/occluder_offset = Vector2( 0, 0 )
-25/navigation_offset = Vector2( 0, 0 )
-25/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 67 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-25/z_index = 0
-26/name = "spr_VillageTileSetNoBkg_strip.png 26"
-26/texture = ExtResource( 2 )
-26/tex_offset = Vector2( 0, 0 )
-26/modulate = Color( 1, 1, 1, 1 )
-26/region = Rect2( 1549, 16, 35, 32 )
-26/tile_mode = 0
-26/occluder_offset = Vector2( 0, 0 )
-26/navigation_offset = Vector2( 0, 0 )
-26/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 68 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-26/z_index = 0
-27/name = "spr_VillageTileSetNoBkg_strip.png 27"
-27/texture = ExtResource( 2 )
-27/tex_offset = Vector2( 0, 0 )
-27/modulate = Color( 1, 1, 1, 1 )
-27/region = Rect2( 1616, 16, 32, 32 )
-27/tile_mode = 0
-27/occluder_offset = Vector2( 0, 0 )
-27/navigation_offset = Vector2( 0, 0 )
-27/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 69 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-27/z_index = 0
-28/name = "spr_VillageTileSetNoBkg_strip.png 28"
-28/texture = ExtResource( 2 )
-28/tex_offset = Vector2( 0, 0 )
-28/modulate = Color( 1, 1, 1, 1 )
-28/region = Rect2( 1680, 16, 32, 32 )
-28/tile_mode = 0
-28/occluder_offset = Vector2( 0, 0 )
-28/navigation_offset = Vector2( 0, 0 )
-28/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 70 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-28/z_index = 0
-29/name = "spr_VillageTileSetNoBkg_strip.png 29"
-29/texture = ExtResource( 2 )
-29/tex_offset = Vector2( 0, 0 )
-29/modulate = Color( 1, 1, 1, 1 )
-29/region = Rect2( 1744, 16, 32, 32 )
-29/tile_mode = 0
-29/occluder_offset = Vector2( 0, 0 )
-29/navigation_offset = Vector2( 0, 0 )
-29/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 71 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-29/z_index = 0
-30/name = "spr_VillageTileSetNoBkg_strip.png 30"
-30/texture = ExtResource( 2 )
-30/tex_offset = Vector2( 0, 0 )
-30/modulate = Color( 1, 1, 1, 1 )
-30/region = Rect2( 1808, 16, 32, 32 )
-30/tile_mode = 0
-30/occluder_offset = Vector2( 0, 0 )
-30/navigation_offset = Vector2( 0, 0 )
-30/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 73 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-30/z_index = 0
-31/name = "spr_VillageTileSetNoBkg_strip.png 31"
-31/texture = ExtResource( 2 )
-31/tex_offset = Vector2( 0, 0 )
-31/modulate = Color( 1, 1, 1, 1 )
-31/region = Rect2( 1872, 16, 32, 32 )
-31/tile_mode = 0
-31/occluder_offset = Vector2( 0, 0 )
-31/navigation_offset = Vector2( 0, 0 )
-31/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 74 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-31/z_index = 0
-32/name = "spr_VillageTileSetNoBkg_strip.png 32"
-32/texture = ExtResource( 2 )
-32/tex_offset = Vector2( 0, 0 )
-32/modulate = Color( 1, 1, 1, 1 )
-32/region = Rect2( 1936, 16, 32, 32 )
-32/tile_mode = 0
-32/occluder_offset = Vector2( 0, 0 )
-32/navigation_offset = Vector2( 0, 0 )
-32/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 75 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-32/z_index = 0
-33/name = "spr_VillageTileSetNoBkg_strip.png 33"
-33/texture = ExtResource( 2 )
-33/tex_offset = Vector2( 0, 0 )
-33/modulate = Color( 1, 1, 1, 1 )
-33/region = Rect2( 2000, 16, 32, 32 )
-33/tile_mode = 0
-33/occluder_offset = Vector2( 0, 0 )
-33/navigation_offset = Vector2( 0, 0 )
-33/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 76 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-33/z_index = 0
-34/name = "spr_VillageTileSetNoBkg_strip.png 34"
-34/texture = ExtResource( 2 )
-34/tex_offset = Vector2( 0, 0 )
-34/modulate = Color( 1, 1, 1, 1 )
-34/region = Rect2( 2064, 16, 32, 32 )
-34/tile_mode = 0
-34/occluder_offset = Vector2( 0, 0 )
-34/navigation_offset = Vector2( 0, 0 )
-34/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 77 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-34/z_index = 0
-35/name = "spr_VillageTileSetNoBkg_strip.png 35"
-35/texture = ExtResource( 2 )
-35/tex_offset = Vector2( 0, 0 )
-35/modulate = Color( 1, 1, 1, 1 )
-35/region = Rect2( 2128, 16, 32, 32 )
-35/tile_mode = 0
-35/occluder_offset = Vector2( 0, 0 )
-35/navigation_offset = Vector2( 0, 0 )
-35/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 78 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-35/z_index = 0
-36/name = "spr_VillageTileSetNoBkg_strip.png 36"
-36/texture = ExtResource( 2 )
-36/tex_offset = Vector2( 0, 0 )
-36/modulate = Color( 1, 1, 1, 1 )
-36/region = Rect2( 2192, 16, 32, 48 )
-36/tile_mode = 0
-36/occluder_offset = Vector2( 0, 0 )
-36/navigation_offset = Vector2( 0, 0 )
-36/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 79 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-36/z_index = 0
-37/name = "spr_VillageTileSetNoBkg_strip.png 37"
-37/texture = ExtResource( 2 )
-37/tex_offset = Vector2( 0, 0 )
-37/modulate = Color( 1, 1, 1, 1 )
-37/region = Rect2( 2252, 16, 36, 32 )
-37/tile_mode = 0
-37/occluder_offset = Vector2( 0, 0 )
-37/navigation_offset = Vector2( 0, 0 )
-37/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 80 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-37/z_index = 0
-38/name = "spr_VillageTileSetNoBkg_strip.png 38"
-38/texture = ExtResource( 2 )
-38/tex_offset = Vector2( 0, 0 )
-38/modulate = Color( 1, 1, 1, 1 )
-38/region = Rect2( 2320, 12, 32, 36 )
-38/tile_mode = 0
-38/occluder_offset = Vector2( 0, 0 )
-38/navigation_offset = Vector2( 0, 0 )
-38/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 81 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-38/z_index = 0
-39/name = "spr_VillageTileSetNoBkg_strip.png 39"
-39/texture = ExtResource( 2 )
-39/tex_offset = Vector2( 0, 0 )
-39/modulate = Color( 1, 1, 1, 1 )
-39/region = Rect2( 2384, 16, 36, 32 )
-39/tile_mode = 0
-39/occluder_offset = Vector2( 0, 0 )
-39/navigation_offset = Vector2( 0, 0 )
-39/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 82 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-39/z_index = 0
-40/name = "spr_VillageTileSetNoBkg_strip.png 40"
-40/texture = ExtResource( 2 )
-40/tex_offset = Vector2( 0, 0 )
-40/modulate = Color( 1, 1, 1, 1 )
-40/region = Rect2( 2448, 12, 36, 36 )
-40/tile_mode = 0
-40/occluder_offset = Vector2( 0, 0 )
-40/navigation_offset = Vector2( 0, 0 )
-40/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 84 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-40/z_index = 0
-41/name = "spr_VillageTileSetNoBkg_strip.png 41"
-41/texture = ExtResource( 2 )
-41/tex_offset = Vector2( 0, 0 )
-41/modulate = Color( 1, 1, 1, 1 )
-41/region = Rect2( 2572, 16, 36, 46 )
-41/tile_mode = 0
-41/occluder_offset = Vector2( 0, 0 )
-41/navigation_offset = Vector2( 0, 0 )
-41/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 85 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-41/z_index = 0
-42/name = "spr_VillageTileSetNoBkg_strip.png 42"
-42/texture = ExtResource( 2 )
-42/tex_offset = Vector2( 0, 0 )
-42/modulate = Color( 1, 1, 1, 1 )
-42/region = Rect2( 2636, 12, 36, 36 )
-42/tile_mode = 0
-42/occluder_offset = Vector2( 0, 0 )
-42/navigation_offset = Vector2( 0, 0 )
-42/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 86 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-42/z_index = 0
-43/name = "spr_VillageTileSetNoBkg_strip.png 43"
-43/texture = ExtResource( 2 )
-43/tex_offset = Vector2( 0, 0 )
-43/modulate = Color( 1, 1, 1, 1 )
-43/region = Rect2( 2704, 16, 32, 46 )
-43/tile_mode = 0
-43/occluder_offset = Vector2( 0, 0 )
-43/navigation_offset = Vector2( 0, 0 )
-43/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 87 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-43/z_index = 0
-44/name = "spr_VillageTileSetNoBkg_strip.png 44"
-44/texture = ExtResource( 2 )
-44/tex_offset = Vector2( 0, 0 )
-44/modulate = Color( 1, 1, 1, 1 )
-44/region = Rect2( 2764, 16, 36, 32 )
-44/tile_mode = 0
-44/occluder_offset = Vector2( 0, 0 )
-44/navigation_offset = Vector2( 0, 0 )
-44/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 88 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-44/z_index = 0
-45/name = "spr_VillageTileSetNoBkg_strip.png 45"
-45/texture = ExtResource( 2 )
-45/tex_offset = Vector2( 0, 0 )
-45/modulate = Color( 1, 1, 1, 1 )
-45/region = Rect2( 2832, 12, 32, 36 )
-45/tile_mode = 0
-45/occluder_offset = Vector2( 0, 0 )
-45/navigation_offset = Vector2( 0, 0 )
-45/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 89 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-45/z_index = 0
-46/name = "spr_VillageTileSetNoBkg_strip.png 46"
-46/texture = ExtResource( 2 )
-46/tex_offset = Vector2( 0, 0 )
-46/modulate = Color( 1, 1, 1, 1 )
-46/region = Rect2( 2896, 16, 36, 32 )
-46/tile_mode = 0
-46/occluder_offset = Vector2( 0, 0 )
-46/navigation_offset = Vector2( 0, 0 )
-46/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 90 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-46/z_index = 0
-
-[sub_resource type="ConvexPolygonShape2D" id=97]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
-
-[sub_resource type="ConvexPolygonShape2D" id=98]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
-
-[sub_resource type="ConvexPolygonShape2D" id=99]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
-
-[sub_resource type="ConvexPolygonShape2D" id=100]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 14, 0, 14 )
-
-[sub_resource type="ConvexPolygonShape2D" id=101]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 57, 0, 57 )
 
-[sub_resource type="ConvexPolygonShape2D" id=102]
+[sub_resource type="ConvexPolygonShape2D" id=62]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 
-[sub_resource type="ConvexPolygonShape2D" id=103]
+[sub_resource type="ConvexPolygonShape2D" id=63]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 
-[sub_resource type="TileSet" id=104]
+[sub_resource type="TileSet" id=64]
 0/name = "spr_VillageOneWayTileSetNoBkg_strip.png 0"
 0/texture = ExtResource( 7 )
 0/tex_offset = Vector2( 0, 0 )
@@ -1833,7 +1443,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 97 ),
+"shape": SubResource( 57 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -1849,7 +1459,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 98 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -1865,7 +1475,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 99 ),
+"shape": SubResource( 59 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -1881,7 +1491,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 100 ),
+"shape": SubResource( 60 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -1897,7 +1507,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 101 ),
+"shape": SubResource( 61 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
@@ -1913,7 +1523,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 102 ),
+"shape": SubResource( 62 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -1929,39 +1539,112 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 103 ),
+"shape": SubResource( 63 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
 
 [node name="Map" type="Node2D"]
 
-[node name="GroundsetWithoutGrass" type="TileMap" parent="."]
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 802.799, 286.976 )
 z_index = 1
-tile_set = SubResource( 48 )
-cell_size = Vector2( 24, 24 )
-format = 1
-tile_data = PoolIntArray( 1179657, 0, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="Wolf" parent="." instance=ExtResource( 3 )]
+position = Vector2( 262.055, 228.68 )
+z_index = 1
 
 [node name="GroundsetWithGrass" type="TileMap" parent="."]
 z_index = 1
-tile_set = SubResource( 96 )
+tile_set = SubResource( 49 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 720917, 7, 0, 786440, 8, 0, 786441, 10, 0, 786442, 10, 0, 786443, 9, 0, 786451, 7, 0, 851985, 7, 0, 917504, 1, 0, 917505, 1, 0, 917506, 1, 0, 917507, 1, 0, 917508, 1, 0, 917509, 1, 0, 917510, 2, 0, 983040, 13, 0, 983041, 13, 0, 983042, 13, 0, 983043, 13, 0, 983044, 13, 0, 983045, 13, 0, 983046, 12, 0, 983052, 42, 0, 983053, 38, 0, 983054, 1, 0, 983055, 45, 0, 983056, 40, 0, 1048576, 13, 0, 1048577, 13, 0, 1048578, 13, 0, 1048579, 13, 0, 1048580, 13, 0, 1048581, 13, 0, 1048582, 12, 0, 1048588, 41, 0, 1048589, 43, 0, 1048590, 5, 0, 1048591, 36, 0, 1048592, 11, 0, 1114112, 13, 0, 1114113, 13, 0, 1114114, 13, 0, 1114115, 13, 0, 1114116, 13, 0, 1114117, 13, 0, 1114118, 12, 0, 1179648, 13, 0, 1179649, 13, 0, 1179650, 13, 0, 1179651, 13, 0, 1179652, 13, 0, 1179653, 13, 0, 1179654, 12, 0 )
+tile_data = PoolIntArray( 0, 12, 0, 65536, 12, 0, 131072, 12, 0, 196608, 12, 0, 262144, 16, 0, 262145, 2, 0, 327680, 13, 0, 327681, 13, 0, 327682, 9, 0, 393216, 17, 0, 393217, 6, 0, 458752, 12, 0, 524288, 16, 0, 524289, 2, 0, 589824, 13, 0, 589825, 46, 0, 655360, 13, 0, 655361, 34, 0, 655362, 40, 0, 720896, 13, 0, 720897, 16, 0, 720898, 28, 0, 720899, 2, 0, 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 12, 0, 851968, 13, 0, 851969, 13, 0, 851970, 13, 0, 851971, 6, 0, 852007, 7, 0, 852015, 20, 0, 917504, 13, 0, 917505, 13, 0, 917506, 6, 0, 917541, 7, 0, 917545, 7, 0, 917551, 20, 0, 983040, 13, 0, 983041, 12, 0, 983075, 7, 0, 983087, 41, 0, 983088, 10, 0, 983089, 9, 0, 1048576, 13, 0, 1048577, 16, 0, 1048578, 1, 0, 1048579, 2, 0, 1048599, 0, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 2, 0, 1048615, 8, 0, 1048616, 38, 0, 1048617, 1, 0, 1048618, 1, 0, 1048619, 45, 0, 1048620, 9, 0, 1114112, 13, 0, 1114113, 13, 0, 1114114, 13, 0, 1114115, 16, 0, 1114116, 1, 0, 1114117, 2, 0, 1114129, 0, 0, 1114130, 1, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 15, 0, 1114136, 13, 0, 1114137, 13, 0, 1114138, 13, 0, 1114139, 13, 0, 1114140, 13, 0, 1114141, 13, 0, 1114142, 13, 0, 1114143, 13, 0, 1114144, 17, 0, 1114145, 6, 0, 1114152, 4, 0, 1114153, 5, 0, 1114154, 5, 0, 1114155, 6, 0, 1114163, 42, 0, 1114164, 40, 0, 1179648, 13, 0, 1179649, 13, 0, 1179650, 13, 0, 1179651, 13, 0, 1179652, 13, 0, 1179653, 16, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 15, 0, 1179666, 13, 0, 1179667, 13, 0, 1179668, 13, 0, 1179669, 13, 0, 1179670, 13, 0, 1179671, 13, 0, 1179672, 13, 0, 1179673, 13, 0, 1179674, 13, 0, 1179675, 13, 0, 1179676, 13, 0, 1179677, 13, 0, 1179678, 13, 0, 1179679, 13, 0, 1179680, 12, 0, 1179694, 0, 0, 1179695, 1, 0, 1179696, 1, 0, 1179697, 1, 0, 1179698, 1, 0, 1179699, 28, 0, 1179700, 28, 0, 1179701, 1, 0, 1179702, 1, 0, 1179703, 1, 0, 1179704, 1, 0, 1179705, 1, 0, 1179706, 1, 0, 1179707, 1, 0, 1179708, 1, 0, 1179709, 1, 0, 1179710, 1, 0, 1179711, 1, 0, 1179712, 1, 0, 1179713, 1, 0 )
 
-[node name="OneWayTileset" type="TileMap" parent="."]
-tile_set = SubResource( 104 )
-cell_size = Vector2( 32, 61 )
-format = 1
-tile_data = PoolIntArray( 589830, 4, 0 )
+[node name="StaticBody2D" type="StaticBody2D" parent="GroundsetWithGrass"]
 
-[node name="BgProps2" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 9.5788, 313.819 )
+shape = SubResource( 50 )
+one_way_collision_margin = 18.5
 
-[node name="Trees" type="Node2D" parent="BgProps2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 549.962, 603.47 )
+shape = SubResource( 51 )
+one_way_collision_margin = 18.5
 
-[node name="Tree1" type="Sprite" parent="BgProps2/Trees"]
-position = Vector2( 22.8405, 403.911 )
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 801.355, 568.41 )
+shape = SubResource( 52 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 912.967, 545.873 )
+shape = SubResource( 53 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 108.921, 572.223 )
+shape = SubResource( 54 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 81.0654, 402.831 )
+shape = SubResource( 55 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 41.1642, 420.9 )
+shape = SubResource( 56 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 49.8192, 401.426 )
+shape = SubResource( 65 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 54.3793, 178.557 )
+shape = SubResource( 66 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+position = Vector2( 46.422, 178.075 )
+shape = SubResource( 67 )
+one_way_collision_margin = 18.5
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
+position = Vector2( 64.8339, 534.23 )
+shape = SubResource( 68 )
+one_way_collision_margin = 18.5
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+motion_mirroring = Vector2( 760, 0 )
+
+[node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512.407, 301.705 )
+scale = Vector2( 2.12932, 2.2525 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 480, 270 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="BgProps2" type="Node2D" parent="ParallaxBackground/ParallaxLayer2"]
+
+[node name="Trees" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
+
+[node name="Tree1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 214.953, 530.804 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 29, 20, 73, 100 )
@@ -1969,19 +1652,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tree2" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 213.155, 94.1557 )
-texture = ExtResource( 5 )
-region_enabled = true
-region_rect = Rect2( 138, 2, 80, 118 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Tree3" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 307.087, 107.791 )
+[node name="Tree3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 290.787, 543.355 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 273, 35, 66, 85 )
@@ -1989,9 +1661,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tree4" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 395.337, 102.867 )
+[node name="Tree4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 980.315, 468.705 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 384, 27, 69, 93 )
@@ -1999,9 +1670,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tree5" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 494.571, 100.594 )
+[node name="Tree5" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 933.757, 473.676 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 501, 31, 77, 89 )
@@ -2009,9 +1679,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tree6" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 587.367, 107.033 )
+[node name="Tree6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 638.983, 506.375 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 602, 42, 57, 78 )
@@ -2019,9 +1688,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tree7" type="Sprite" parent="BgProps2/Trees"]
-visible = false
-position = Vector2( 662.361, 109.685 )
+[node name="Tree7" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 678.661, 515.366 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 668, 58, 45, 62 )
@@ -2029,9 +1697,18 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush" type="Node2D" parent="BgProps2"]
+[node name="Tree2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Trees"]
+position = Vector2( 129.608, 516.534 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 138, 2, 80, 118 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Bush1" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
+
+[node name="Bush1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 78.1417, 200.376 )
 texture = ExtResource( 5 )
@@ -2041,7 +1718,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush2" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 125.081, 198.894 )
 texture = ExtResource( 5 )
@@ -2051,7 +1728,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush3" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 163.374, 202.106 )
 texture = ExtResource( 5 )
@@ -2061,7 +1738,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush4" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 198.208, 201.859 )
 texture = ExtResource( 5 )
@@ -2071,7 +1748,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush5" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush5" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 78.8828, 235.457 )
 texture = ExtResource( 5 )
@@ -2081,8 +1758,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush6" type="Sprite" parent="BgProps2/Bush"]
-position = Vector2( 78.5726, 440.059 )
+[node name="Bush6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
+position = Vector2( 473.09, 568.01 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 782, 100, 27, 20 )
@@ -2090,8 +1767,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush7" type="Sprite" parent="BgProps2/Bush"]
-position = Vector2( 61.9818, 445.793 )
+[node name="Bush7" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
+position = Vector2( 452.575, 572.03 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 815, 80, 20, 14 )
@@ -2099,7 +1776,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush8" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush8" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 204.384, 237.187 )
 texture = ExtResource( 5 )
@@ -2109,7 +1786,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush9" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush9" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 83.1222, 271.777 )
 texture = ExtResource( 5 )
@@ -2119,7 +1796,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush10" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush10" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 129.528, 275.726 )
 texture = ExtResource( 5 )
@@ -2129,7 +1806,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bush11" type="Sprite" parent="BgProps2/Bush"]
+[node name="Bush11" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bush"]
 visible = false
 position = Vector2( 182.644, 277.456 )
 texture = ExtResource( 5 )
@@ -2139,9 +1816,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Flowers" type="Node2D" parent="BgProps2"]
+[node name="Flowers" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
 
-[node name="Flower1" type="Sprite" parent="BgProps2/Flowers"]
+[node name="Flower1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Flowers"]
 visible = false
 position = Vector2( 90.1053, 21.3684 )
 texture = ExtResource( 5 )
@@ -2151,8 +1828,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Flower2" type="Sprite" parent="BgProps2/Flowers"]
-position = Vector2( 199.966, 443.41 )
+[node name="Flower2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Flowers"]
+position = Vector2( 565.453, 539.293 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 880, 78, 13, 14 )
@@ -2160,7 +1837,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Flower3" type="Sprite" parent="BgProps2/Flowers"]
+[node name="Flower3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Flowers"]
 visible = false
 position = Vector2( 175.337, 23.0978 )
 texture = ExtResource( 5 )
@@ -2170,7 +1847,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Flower4" type="Sprite" parent="BgProps2/Flowers"]
+[node name="Flower4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Flowers"]
 visible = false
 position = Vector2( 210.171, 22.8507 )
 texture = ExtResource( 5 )
@@ -2180,10 +1857,10 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Houses" type="Node2D" parent="BgProps2"]
+[node name="Houses" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
 
-[node name="House1" type="Sprite" parent="BgProps2/Houses"]
-position = Vector2( 109.677, 427.722 )
+[node name="House1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Houses"]
+position = Vector2( 804.932, 492.057 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 905, 71, 52, 49 )
@@ -2191,7 +1868,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="House2" type="Sprite" parent="BgProps2/Houses"]
+[node name="House2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Houses"]
 visible = false
 position = Vector2( 337.932, 201.25 )
 texture = ExtResource( 5 )
@@ -2201,7 +1878,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="House3" type="Sprite" parent="BgProps2/Houses"]
+[node name="House3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Houses"]
 visible = false
 position = Vector2( 393.271, 203.473 )
 texture = ExtResource( 5 )
@@ -2211,7 +1888,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="House4" type="Sprite" parent="BgProps2/Houses"]
+[node name="House4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Houses"]
 visible = false
 position = Vector2( 440.457, 209.896 )
 texture = ExtResource( 5 )
@@ -2221,9 +1898,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottles" type="Node2D" parent="BgProps2"]
+[node name="Bottles" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
 
-[node name="Bottle1" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 252.257, 24.7921 )
 texture = ExtResource( 5 )
@@ -2233,7 +1910,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottle2" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 276.221, 23.3098 )
 texture = ExtResource( 5 )
@@ -2243,7 +1920,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottle3" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 305.62, 22.5687 )
 texture = ExtResource( 5 )
@@ -2253,7 +1930,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottle4" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 344.159, 22.3216 )
 texture = ExtResource( 5 )
@@ -2263,7 +1940,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottle5" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle5" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 386.899, 23.3098 )
 texture = ExtResource( 5 )
@@ -2273,7 +1950,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bottle6" type="Sprite" parent="BgProps2/Bottles"]
+[node name="Bottle6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Bottles"]
 visible = false
 position = Vector2( 412.839, 23.3098 )
 texture = ExtResource( 5 )
@@ -2283,9 +1960,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fences" type="Node2D" parent="BgProps2"]
+[node name="Fences" type="Node2D" parent="ParallaxBackground/ParallaxLayer2/BgProps2"]
 
-[node name="Fence1" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 452.462, 25.8712 )
 texture = ExtResource( 5 )
@@ -2295,7 +1972,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fence2" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 499.154, 26.6124 )
 texture = ExtResource( 5 )
@@ -2305,7 +1982,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fence3" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence3" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 545.106, 25.1301 )
 texture = ExtResource( 5 )
@@ -2315,7 +1992,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fence4" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 583.892, 27.6005 )
 texture = ExtResource( 5 )
@@ -2325,7 +2002,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fence5" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence5" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 614.032, 28.5887 )
 texture = ExtResource( 5 )
@@ -2335,7 +2012,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Fence6" type="Sprite" parent="BgProps2/Fences"]
+[node name="Fence6" type="Sprite" parent="ParallaxBackground/ParallaxLayer2/BgProps2/Fences"]
 visible = false
 position = Vector2( 645.161, 29.0828 )
 texture = ExtResource( 5 )
@@ -2345,18 +2022,13 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sky" type="Sprite" parent="."]
-visible = false
-position = Vector2( 511.407, 301.705 )
-scale = Vector2( 2.12932, 2.2525 )
-z_index = -1
-z_as_relative = false
-texture = ExtResource( 6 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 16800, 270 )
+[node name="GroundsetWithoutGrass" type="TileMap" parent="."]
+z_index = 1
+tile_set = SubResource( 48 )
+cell_size = Vector2( 24, 24 )
+format = 1
 
-[node name="Golem" parent="." instance=ExtResource( 4 )]
-position = Vector2( 148.24, 439.018 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 59.4589, 421.099 )
+[node name="OneWayTileset" type="TileMap" parent="."]
+tile_set = SubResource( 64 )
+cell_size = Vector2( 32, 61 )
+format = 1
