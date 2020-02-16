@@ -4,7 +4,7 @@ signal play(animation, direction)
 signal land_jump
 
 var movement = Vector2()
-var gravity = 20
+var gravity = 22
 var hp = 100
 
 onready var input_buffer = {
@@ -21,7 +21,7 @@ var current_state = {
 var current_attack = 1
 
 export var speed = 4
-export var jump_strength = -160
+export var jump_strength = -200
 export var max_speed = 100
 export var max_fall = 800
 
@@ -42,7 +42,7 @@ func _process(delta):
 		current_state.facing = "RIGHT"
 		emit_signal("play", "WALK", current_state.facing)
 	if current_state.mode == "JUMP":
-		movement.y -= 18
+		movement.y -= 19
 	if current_state.mode == "ATTACK":
 		movement = Vector2()
 		emit_signal("play", "ATTACK1", current_state.facing)
@@ -55,7 +55,6 @@ func _process(delta):
 	
 	if $CheckGround.is_enabled():
 		if $CheckGround.get_collider():
-			print("DISABLE ME")
 			$PlayerAnimation._fall_resume()
 			$CheckGround.set_enabled(false)
 	
@@ -85,11 +84,15 @@ func _on_Controller_jump():
 		emit_signal("play", "JUMP", current_state.facing)
 
 func _on_PlayerAnimation_jump_startup_ended():
+	print("And jump")
 	movement.y += jump_strength
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
 func _on_Controller_move_left():
+	if current_state.mode == "JUMP":
+		movement += Vector2(-speed / 2, 0)
+		move_and_slide(movement)
 	if current_state.mode != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()
@@ -97,6 +100,9 @@ func _on_Controller_move_left():
 	current_state.mode = "MOVE_LEFT"
 
 func _on_Controller_move_right():
+	if current_state.mode == "JUMP":
+		movement += Vector2(speed / 2, 0)
+		move_and_slide(movement)
 	if current_state.mode != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()

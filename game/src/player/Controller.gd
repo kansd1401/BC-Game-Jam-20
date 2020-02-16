@@ -24,6 +24,7 @@ func get_input():
 		emit_signal("move_left")
 		last_input = "move_left"
 	elif Input.is_action_pressed("ui_right"):
+		print("MOVE ME")
 		emit_signal("move_right")
 		last_input = "move_right"
 	elif Input.is_action_pressed("ui_up"):
