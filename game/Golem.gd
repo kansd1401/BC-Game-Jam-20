@@ -7,20 +7,29 @@ var direction = 1
 var flipped = false
 var hp = 100
 var engaged = false
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var target = null
+var inRange = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	$Timers/Idle.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity.x = speed * direction
 	velocity.y += GRAVITY
-	if velocity.x == 0:
+	if target:
+		if (position.x - target.position.x) > 0 && direction > 0:
+			change_direction()
+		elif (position.x - target.position.x) < 0 && direction < 0:
+			change_direction()
+	if inRange:
+		$GolemAnimation/Walk.hide()
+		$GolemAnimation/IdleE.hide()
+		$GolemAnimation/Attack.show()
+		$GolemAnimation/AnimationPlayer.play("Attack")
+	elif velocity.x == 0 :
 		$GolemAnimation/Walk.hide()
 		$GolemAnimation/IdleE.show()
 		$GolemAnimation/Attack.hide()
@@ -36,6 +45,7 @@ func _process(delta):
 	else:
 		velocity.y = 0
 	if $Rays/WallDetector.is_colliding():
+#		if $Rays/WallDetector.get_collider().get(hp) == null:
 		print("wall")
 		change_direction()
 	move_and_slide(velocity)
@@ -63,3 +73,28 @@ func _on_Walk_timeout():
 func _on_Idle_timeout():
 	speed = 30
 	$Timers/Walk.start()
+
+
+func _on_Area2D_body_entered(body):
+	if body.has_method("damage_player"):
+		engaged = true
+		target = body
+		print("target detected")
+
+
+func _on_Targetting_body_exited(body):
+	if body == target:
+		target = null
+	print("target left")
+
+
+func _on_Range_body_entered(body):
+	if body == target:
+		speed = 0
+		inRange = true
+
+
+func _on_Range_body_exited(body):
+	if body == target:
+		speed = 30
+		inRange = false

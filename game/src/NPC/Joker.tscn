@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/NPC/Joker.gd" type="Script" id=1]
+[ext_resource path="res://src/NPC/Animations/JokerAnimations.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.708, 18.4092 )
+
+[node name="Joker" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="JokerAnimation" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.088707, -6.82561 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="EdgeDetector" type="RayCast2D" parent="Rays"]
+position = Vector2( 16, 2 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+
+[node name="WallDetector" type="RayCast2D" parent="Rays"]
+position = Vector2( 15, 0 )
+enabled = true
+cast_to = Vector2( 10, 0 )
