@@ -130,17 +130,49 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 24 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Jump:offset")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 14, 15 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 25, 0 ), Vector2( 8, 10 ), Vector2( 5, 15 ), Vector2( -2, 15 ), Vector2( -14, 15 ), Vector2( -20, 15 ), Vector2( -32, 15 ), Vector2( -49, 15 ), Vector2( -56, 10 ), Vector2( -67, 0 ) ]
+"times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 13.001, 14, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 25, 0 ],
+"method": "_jump_offset"
+}, {
+"args": [ 8, 10 ],
+"method": "_jump_offset"
+}, {
+"args": [ 5, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -2, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -14, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -20, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -32, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [  ],
+"method": "_fall_pause"
+}, {
+"args": [ -49, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -56, 10 ],
+"method": "_jump_offset"
+}, {
+"args": [ -67, 0 ],
+"method": "_jump_offset"
+} ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -267,6 +299,7 @@ visible = false
 texture = ExtResource( 11 )
 offset = Vector2( 25, 0 )
 hframes = 25
+frame = 13
 
 [node name="JumpEffect" type="Sprite" parent="."]
 visible = false
@@ -279,6 +312,7 @@ frame = 7
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
+frame = 11
 
 [node name="Attack2" type="Sprite" parent="."]
 visible = false

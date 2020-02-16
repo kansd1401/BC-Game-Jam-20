@@ -98,6 +98,12 @@ func _fall_pause():
 func _fall_resume():
 	$AnimationPlayer.play()
 
+func _jump_offset(x, y):
+	var x_offset = x
+	var y_offset = y
+	if flip_sprite:
+		x_offset *= -1
+	$Jump.offset = Vector2(x_offset, y_offset)
 
 
 
@@ -115,6 +121,3 @@ func _fall_resume():
 
 
 
-
-func _on_Player_land_jump():
-	pass # Replace with function body.
