@@ -2,10 +2,12 @@ extends KinematicBody2D
 
 signal play(animation, direction)
 signal land_jump
+signal start_fall
 
 var movement = Vector2()
-var gravity = 20
-var hp = 100
+var gravity = 3
+var lock_horizontal = false
+var is_dead = false
 
 onready var input_buffer = {
 	"input": "",
@@ -20,10 +22,14 @@ var current_state = {
 
 var current_attack = 1
 
+export var hp = 100
 export var speed = 4
-export var jump_strength = -160
+export var jump_strength = -215
 export var max_speed = 100
 export var max_fall = 800
+export var attack_damage_1 = 40
+export var attack_damage_2 = 60
+export var attack_damage_3 = 80
 
 func _ready():
 	input_buffer.timer.set_wait_time(0.2)
@@ -32,33 +38,45 @@ func init(x, y):
 	pass
 
 func _process(delta):
-	# Check for input buffer and perform action if state is idle.
-	if current_state.mode == "MOVE_LEFT":
-		movement.x -= speed
-		current_state.facing = "LEFT"
-		emit_signal("play", "WALK", current_state.facing)
-	if current_state.mode == "MOVE_RIGHT":
-		movement.x += speed
-		current_state.facing = "RIGHT"
-		emit_signal("play", "WALK", current_state.facing)
-	if current_state.mode == "JUMP":
-		movement.y -= 18
-	if current_state.mode == "ATTACK":
-		movement = Vector2()
-		emit_signal("play", "ATTACK1", current_state.facing)
-	if input_buffer.input == "" && current_state.mode == "IDLE":
-		emit_signal("play", "IDLE", current_state.facing)
-		movement = Vector2()
-	movement.x = clamp(movement.x, -max_speed, max_speed)
-	movement.y += clamp(gravity, -max_fall, max_fall)
-	move_and_slide(movement)
-	
-	if $CheckGround.is_enabled():
-		if $CheckGround.get_collider():
-			print("DISABLE ME")
-			$PlayerAnimation._fall_resume()
-			$CheckGround.set_enabled(false)
-	
+	if !is_dead:
+		# Check for input buffer and perform action if state is idle.
+		if current_state.mode == "MOVE_LEFT":
+			movement.x -= speed
+			current_state.facing = "LEFT"
+			emit_signal("play", "WALK", current_state.facing)
+		if current_state.mode == "MOVE_RIGHT":
+			movement.x += speed
+			current_state.facing = "RIGHT"
+			emit_signal("play", "WALK", current_state.facing)
+		if current_state.mode == "JUMP":
+			pass
+		if current_state.mode == "ATTACK":
+			movement = Vector2()
+			emit_signal("play", "ATTACK1", current_state.facing)
+		if input_buffer.input == "" && current_state.mode == "IDLE":
+			emit_signal("play", "IDLE", current_state.facing)
+			movement = Vector2()
+		movement.x = clamp(movement.x, -max_speed, max_speed)
+		movement.y += clamp(gravity, -max_fall, max_fall)
+		move_and_slide(movement)
+		
+		if $CheckGround.is_enabled():
+			if $CheckGround.get_collider():
+				lock_horizontal = true
+				reset_horizontal_movement()
+				$PlayerAnimation._fall_resume()
+				$CheckGround.set_enabled(false)
+				$CheckLeftGround.set_enabled(true)
+		
+		if $CheckLeftGround.is_enabled():
+			if !$CheckLeftGround.get_collider():
+				current_state.mode = "JUMP"
+				emit_signal("start_fall")
+	else:
+		pass
+
+func reset_horizontal_movement():
+	movement.x = 0
 
 # Collision will have to be managed by player state, and at times will change a little wildly.
 func update_collision():
@@ -85,11 +103,15 @@ func _on_Controller_jump():
 		emit_signal("play", "JUMP", current_state.facing)
 
 func _on_PlayerAnimation_jump_startup_ended():
+	print("And jump")
 	movement.y += jump_strength
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
 func _on_Controller_move_left():
+	if current_state.mode == "JUMP" && !lock_horizontal:
+		movement += Vector2(-speed / 2, 0)
+		move_and_slide(movement)
 	if current_state.mode != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()
@@ -97,6 +119,9 @@ func _on_Controller_move_left():
 	current_state.mode = "MOVE_LEFT"
 
 func _on_Controller_move_right():
+	if current_state.mode == "JUMP" && !lock_horizontal:
+		movement += Vector2(speed / 2, 0)
+		move_and_slide(movement)
 	if current_state.mode != "IDLE":
 		input_buffer.input = ""
 		input_buffer.timer.start()
@@ -113,6 +138,7 @@ func _on_Controller_idle():
 
 
 func _on_PlayerAnimation_please_idle():
+	lock_horizontal = false
 	if input_buffer.input == "":
 		current_state.mode = "IDLE"
 	elif input_buffer.input == "ATTACK":
@@ -125,10 +151,34 @@ func _on_PlayerAnimation_please_idle():
 	
 	current_attack = 1
 
-func damage_player():
-	print("ouch")
-
-
+func damage_player(dam):
+	hp -= dam
+	print(dam)
+	if hp <= 0:
+		emit_signal("play", "DEATH", current_state.facing)
+		is_dead = true
+		$CollisionShape2D.set_disabled(true)
 
 func _on_PlayerAnimation_fall_paused():
 	$CheckGround.set_enabled(true)
+
+
+func _on_PlayerAnimation_attack_impact_1():
+	var hitbox = $HitBoxes/Attack1
+	for body in hitbox.get_overlapping_bodies():
+		if body.has_method("damage_npc"):
+			body.damage_npc(attack_damage_1)
+
+
+func _on_PlayerAnimation_attack_impact_2():
+	var hitbox = $HitBoxes/Attack2
+	for body in hitbox.get_overlapping_bodies():
+		if body.has_method("damage_npc"):
+			body.damage_npc(attack_damage_2)
+
+
+func _on_PlayerAnimation_attack_impact_3():
+	var hitbox = $HitBoxes/Attack3
+	for body in hitbox.get_overlapping_bodies():
+		if body.has_method("damage_npc"):
+			body.damage_npc(attack_damage_3)

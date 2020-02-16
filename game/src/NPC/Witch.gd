@@ -13,11 +13,13 @@ var inRange = false
 var idling = false
 var attacking = false
 var walking = false
-onready var anim = $GolemAnimation/AnimationPlayer
-onready var spriteW = $GolemAnimation/Walk
-onready var spriteA = $GolemAnimation/Attack
-onready var spriteD = $GolemAnimation/Death
-onready var spriteI = $GolemAnimation/IdleE
+onready var anim = $WitchAnimation/AnimationPlayer
+onready var spriteW = $WitchAnimation/Walk
+onready var spriteA = $WitchAnimation/Attack
+onready var spriteD = $WitchAnimation/Death
+onready var spriteI = $WitchAnimation/IdleE
+export var fireball = preload("res://src/NPC/Projectile.tscn")
+
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -42,8 +44,8 @@ func _process(delta):
 			spriteW.hide()
 			spriteI.hide()
 			spriteA.show()
-			anim.play("ATTACK")
 			$Timers/Attack.start()
+			anim.play("ATTACK")
 			attacking = true
 			idling = false
 			walking = false
@@ -142,12 +144,14 @@ func _attack_finished():
 	attacking = false
 	walking = false
 	idling = false
-	print("damage time")
 
 
 func _on_Attack_timeout():
-	if inRange:
-		target.damage_player(damage)
+	print("attcking")
+	var proj = fireball.instance()
+	get_parent().add_child(proj)
+	proj.start(position, direction)
+	attacking = false
 
 func _on_Death_timeout():
 	queue_free()

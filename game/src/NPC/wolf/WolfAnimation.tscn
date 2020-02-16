@@ -6,8 +6,6 @@
 [ext_resource path="res://Assets/Wolf/noBKG_WolfRun_strip.png" type="Texture" id=4]
 [ext_resource path="res://src/NPC/wolf/WolfAnimation.gd" type="Script" id=5]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK"
 loop = true
@@ -76,6 +74,7 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="Idle" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 hframes = 12
 
@@ -94,7 +93,7 @@ frame = 1
 visible = false
 texture = ExtResource( 1 )
 hframes = 18
-frame = 1
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.7

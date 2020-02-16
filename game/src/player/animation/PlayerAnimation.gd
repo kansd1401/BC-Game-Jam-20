@@ -3,6 +3,9 @@ extends Node2D
 signal please_idle
 signal jump_startup_ended
 signal fall_paused
+signal attack_impact_1
+signal attack_impact_2
+signal attack_impact_3
 
 onready var player = $AnimationPlayer
 onready var effect_player = $EffectPlayer
@@ -33,7 +36,7 @@ var animation_speed = {
 	"ATTACK2": 1,
 	"ATTACK3": 1,
 	"DASH": 1,
-	"DEATH": 1,
+	"DEATH": 0.2,
 	"LEAP": 1,
 	"SPIN": 1,
 	"TAUNT": 1
@@ -87,6 +90,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "JUMP":
 		_switch_to("IDLE")
 		emit_signal("please_idle")
+		print("We done here")
 
 func _jump_startup_ended():
 	emit_signal("jump_startup_ended")
@@ -98,6 +102,30 @@ func _fall_pause():
 func _fall_resume():
 	$AnimationPlayer.play()
 
+func _jump_offset(x, y):
+	var x_offset = x
+	var y_offset = y
+	if flip_sprite:
+		x_offset *= -1
+	$Jump.offset = Vector2(x_offset, y_offset)
+
+func _attack_impact_1():
+	emit_signal("attack_impact_1")
+
+func _attack_impact_2():
+	emit_signal("attack_impact_2")
+
+func _attack_impact_3():
+	emit_signal("attack_impact_3")
+
+func _on_Player_start_fall():
+	animation_lookup[current_playing].hide()
+	current_playing = "JUMP"
+	animation_lookup["JUMP"].show()
+	player.play("JUMP")
+	player.seek(13)
+	player.set_speed_scale(animation_speed["JUMP"])
+	player.play()
 
 
 
@@ -114,7 +142,3 @@ func _fall_resume():
 
 
 
-
-
-func _on_Player_land_jump():
-	pass # Replace with function body.
