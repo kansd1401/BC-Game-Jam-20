@@ -2,6 +2,7 @@ extends Node2D
 
 signal please_idle
 signal jump_startup_ended
+signal fall_paused
 
 onready var player = $AnimationPlayer
 onready var effect_player = $EffectPlayer
@@ -90,6 +91,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _jump_startup_ended():
 	emit_signal("jump_startup_ended")
 
+func _fall_pause():
+	$AnimationPlayer.stop(false)
+	emit_signal("fall_paused")
+
+func _fall_resume():
+	print("Am I be called?")
+	$AnimationPlayer.play()
 
 
 
@@ -109,4 +117,5 @@ func _jump_startup_ended():
 
 
 
-
+func _on_Player_land_jump():
+	pass # Replace with function body.
