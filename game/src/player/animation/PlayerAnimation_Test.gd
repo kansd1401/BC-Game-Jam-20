@@ -16,7 +16,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("NUM_1"):
-		animation.play("ATTACK", "RIGHT")
+		animation.play("ATTACK1", "RIGHT")
 	if event.is_action_pressed("NUM_2"):
 		animation.play("DASH", "RIGHT")
 	if event.is_action_pressed("NUM_3"):
