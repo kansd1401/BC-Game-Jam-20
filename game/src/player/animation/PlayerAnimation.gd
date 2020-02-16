@@ -101,6 +101,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if reviving:
 			_switch_to("IDLE")
 			emit_signal("revive")
+			reviving = false
 		player.play_backwards("DEATH")
 		reviving = true
 

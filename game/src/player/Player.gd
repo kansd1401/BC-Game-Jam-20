@@ -74,6 +74,8 @@ func _process(delta):
 			$CheckLeftGround.force_raycast_update()
 			if !$CheckLeftGround.is_colliding():
 				current_state.mode = "JUMP"
+				if movement.y >= 0:
+					movement.y = gravity
 				print("Start fall puh-lease")
 				emit_signal("start_fall", current_state.facing)
 				$CheckLeftGround.set_enabled(false)
