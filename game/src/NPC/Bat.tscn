@@ -17,7 +17,7 @@ shape = SubResource( 1 )
 [node name="Timers" type="Node" parent="."]
 
 [node name="Idle" type="Timer" parent="Timers"]
-wait_time = 0.75
+wait_time = 5.0
 one_shot = true
 
 [node name="Patrol" type="Timer" parent="Timers"]
@@ -29,16 +29,16 @@ one_shot = true
 [node name="ForwardCollision" type="RayCast2D" parent="Rays"]
 position = Vector2( 10, 0 )
 enabled = true
-cast_to = Vector2( 5, 0 )
+cast_to = Vector2( 10, 0 )
 
 [node name="HeadCollision" type="RayCast2D" parent="Rays"]
 position = Vector2( 10, -2 )
 enabled = true
-cast_to = Vector2( 0, -5 )
+cast_to = Vector2( 0, -8 )
 
 [node name="FeetCollision" type="RayCast2D" parent="Rays"]
 position = Vector2( 10, 2 )
 enabled = true
-cast_to = Vector2( 0, 5 )
+cast_to = Vector2( 0, 8 )
 [connection signal="timeout" from="Timers/Idle" to="." method="_on_Idle_timeout"]
 [connection signal="timeout" from="Timers/Patrol" to="." method="_on_Patrol_timeout"]

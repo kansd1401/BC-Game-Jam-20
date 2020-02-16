@@ -2034,5 +2034,11 @@ tile_set = SubResource( 68 )
 cell_size = Vector2( 32, 61 )
 format = 1
 
+[node name="Bat4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 122.174, 483.464 )
+
 [node name="Bat" parent="." instance=ExtResource( 9 )]
-position = Vector2( 366.002, 379.692 )
+position = Vector2( 467.124, 520.351 )
+
+[node name="Bat2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 344.782, 517.968 )
