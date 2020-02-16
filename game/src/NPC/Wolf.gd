@@ -13,6 +13,7 @@ var inRange = false
 var idling = false
 var attacking = false
 var walking = false
+var dead = false
 onready var anim = $WolfAnimation/AnimationPlayer
 onready var spriteW = $WolfAnimation/Run
 onready var spriteA = $WolfAnimation/Attack
@@ -94,7 +95,8 @@ func change_direction():
 
 func damage_npc(dam):
 	hp = hp-dam
-	if hp <= 0:
+	if hp <= 0 && !dead:
+		dead = true
 		spriteW.hide()
 		spriteI.hide()
 		spriteA.hide()
