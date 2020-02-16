@@ -23,6 +23,7 @@ var current_state = {
 var current_attack = 1
 
 export var hp = 100
+var hp_max = hp
 export var speed = 4
 export var jump_strength = -215
 export var max_speed = 100
@@ -131,11 +132,9 @@ func _on_Controller_move_right():
 func _on_Input_Buffer_timeout():
 	input_buffer.input = ""
 
-
 func _on_Controller_idle():
 	if current_state.mode == "MOVE_LEFT" || current_state.mode == "MOVE_RIGHT":
 		current_state.mode = "IDLE"
-
 
 func _on_PlayerAnimation_please_idle():
 	lock_horizontal = false
@@ -150,6 +149,12 @@ func _on_PlayerAnimation_please_idle():
 		return
 	
 	current_attack = 1
+
+func _on_PlayerAnimation_revive():
+	hp = hp_max
+	_on_PlayerAnimation_please_idle()
+	is_dead = false
+	$CollisionShape2D.set_disabled(false)
 
 func damage_player(dam):
 	hp -= dam

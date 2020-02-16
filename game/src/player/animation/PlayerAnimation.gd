@@ -6,6 +6,7 @@ signal fall_paused
 signal attack_impact_1
 signal attack_impact_2
 signal attack_impact_3
+signal revive
 
 onready var player = $AnimationPlayer
 onready var effect_player = $EffectPlayer
@@ -44,6 +45,7 @@ var animation_speed = {
 
 var current_playing = "IDLE"
 var flip_sprite = false
+var reviving = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,7 +65,6 @@ func _switch_to(animation_name):
 		
 		animation_lookup[animation_name].show()
 		if effect_lookup.has(animation_name):
-			print("Found it")
 			effect_lookup[animation_name].show()
 			effect_player.set_speed_scale(animation_speed[animation_name])
 			effect_player.play(animation_name)
@@ -90,7 +91,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "JUMP":
 		_switch_to("IDLE")
 		emit_signal("please_idle")
-		print("We done here")
+	
+	if anim_name == "DEATH":
+		if reviving:
+			_switch_to("IDLE")
+			emit_signal("revive")
+		player.play_backwards("DEATH")
+		reviving = true
 
 func _jump_startup_ended():
 	emit_signal("jump_startup_ended")

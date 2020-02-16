@@ -93,4 +93,5 @@ shape = SubResource( 6 )
 [connection signal="fall_paused" from="PlayerAnimation" to="." method="_on_PlayerAnimation_fall_paused"]
 [connection signal="jump_startup_ended" from="PlayerAnimation" to="." method="_on_PlayerAnimation_jump_startup_ended"]
 [connection signal="please_idle" from="PlayerAnimation" to="." method="_on_PlayerAnimation_please_idle"]
+[connection signal="revive" from="PlayerAnimation" to="." method="_on_PlayerAnimation_revive"]
 [connection signal="timeout" from="Input_Buffer" to="." method="_on_Input_Buffer_timeout"]
