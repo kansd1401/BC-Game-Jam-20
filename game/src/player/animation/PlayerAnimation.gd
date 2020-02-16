@@ -90,6 +90,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "JUMP":
 		_switch_to("IDLE")
 		emit_signal("please_idle")
+		print("We done here")
 
 func _jump_startup_ended():
 	emit_signal("jump_startup_ended")
@@ -119,6 +120,7 @@ func _attack_impact_3():
 
 func _on_Player_start_fall():
 	animation_lookup[current_playing].hide()
+	current_playing = "JUMP"
 	animation_lookup["JUMP"].show()
 	player.play("JUMP")
 	player.seek(13)
