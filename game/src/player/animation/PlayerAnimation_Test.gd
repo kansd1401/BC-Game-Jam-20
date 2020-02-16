@@ -16,20 +16,20 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("NUM_1"):
-		animation.play("ATTACK")
+		animation.play("ATTACK", "RIGHT")
 	if event.is_action_pressed("NUM_2"):
-		animation.play("DASH")
+		animation.play("DASH", "RIGHT")
 	if event.is_action_pressed("NUM_3"):
-		animation.play("DEATH")
+		animation.play("DEATH", "RIGHT")
 	if event.is_action_pressed("NUM_4"):
-		animation.play("IDLE")
+		animation.play("IDLE", "RIGHT")
 	if event.is_action_pressed("NUM_5"):
-		animation.play("JUMP")
+		animation.play("JUMP", "RIGHT")
 	if event.is_action_pressed("NUM_6"):
-		animation.play("LEAP")
+		animation.play("LEAP", "RIGHT")
 	if event.is_action_pressed("NUM_7"):
-		animation.play("SPIN")
+		animation.play("SPIN", "RIGHT")
 	if event.is_action_pressed("NUM_8"):
-		animation.play("TAUNT")
+		animation.play("TAUNT", "RIGHT")
 	if event.is_action_pressed("NUM_9"):
-		animation.play("WALK")
+		animation.play("WALK", "RIGHT")

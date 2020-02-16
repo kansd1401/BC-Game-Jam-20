@@ -18,12 +18,14 @@ onready var animation_lookup = {
 }
 
 var current_playing = "IDLE"
+var flip_sprite = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func play(animation_name):
+func play(animation_name, direction):
+	face(animation_name, direction)
 	animation_name = animation_name.to_upper()
 	if animation_lookup.has(animation_name):
 		_switch_to(animation_name)
@@ -35,7 +37,15 @@ func _switch_to(animation_name):
 		player.play(animation_name)
 		current_playing = animation_name
 
+func face(animation_name, direction):
+	if direction == "LEFT":
+		flip_sprite = true
+	elif direction == "RIGHT":
+		flip_sprite = false
+	animation_lookup[animation_name].set_flip_h(flip_sprite)
 
+func _on_Player_play(animation, direction):
+	play(animation, direction)
 
 
 
