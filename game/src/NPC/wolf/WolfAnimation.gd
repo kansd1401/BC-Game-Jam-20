@@ -24,3 +24,4 @@ func _switch(movement):
 	animation[movement].show()
 	player.play(movement)
 	current_movement = movement
+
