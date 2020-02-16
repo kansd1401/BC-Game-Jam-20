@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal play(animation, direction)
 
 var movement = Vector2()
-var gravity = 200
+var gravity = 20
 
 onready var input_buffer = {
 	"input": "",
@@ -19,7 +19,7 @@ var current_state = {
 var current_attack = 1
 
 export var speed = 4
-export var jump_strength = -220
+export var jump_strength = -160
 export var max_speed = 100
 export var max_fall = 800
 
@@ -40,8 +40,7 @@ func _process(delta):
 		current_state.facing = "RIGHT"
 		emit_signal("play", "WALK", current_state.facing)
 	if current_state.mode == "JUMP":
-		movement.y += jump_strength
-		emit_signal("play", "JUMP", current_state.facing)
+		movement.y -= 18
 	if current_state.mode == "ATTACK":
 		movement = Vector2()
 		emit_signal("play", "ATTACK1", current_state.facing)
@@ -75,6 +74,8 @@ func _on_Controller_jump():
 		input_buffer.timer.start()
 	else :
 		current_state.mode = "JUMP"
+		movement.y += jump_strength
+		emit_signal("play", "JUMP", current_state.facing)
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
