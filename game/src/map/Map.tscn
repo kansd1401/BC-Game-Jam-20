@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=6]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageOneWayTileSetNoBkg_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageSpikesNoBkg_strip.png" type="Texture" id=8]
-[ext_resource path="res://src/NPC/Wolf.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/NPC/Bat.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "spr_VillageTileSetNoBkg_strip.png 0"
@@ -1548,78 +1548,83 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 [node name="Map" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1172.67, 480.421 )
+position = Vector2( 802.799, 286.976 )
 z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 24.7609, 0 )
-current = true
+visible = false
 
 [node name="GroundsetWithGrass" type="TileMap" parent="."]
 z_index = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 0, 12, 0, 65536, 12, 0, 131072, 12, 0, 196608, 12, 0, 262144, 16, 0, 262145, 2, 0, 327680, 13, 0, 327681, 13, 0, 327682, 9, 0, 393216, 17, 0, 393217, 6, 0, 458752, 12, 0, 524288, 16, 0, 524289, 2, 0, 524312, 0, 0, 589824, 13, 0, 589825, 46, 0, 589848, 0, 0, 655360, 13, 0, 655361, 34, 0, 655362, 40, 0, 655384, 0, 0, 720896, 13, 0, 720897, 16, 0, 720898, 28, 0, 720899, 2, 0, 720920, 0, 0, 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 12, 0, 786455, 0, 0, 851968, 13, 0, 851969, 13, 0, 851970, 13, 0, 851971, 6, 0, 851990, 0, 0, 852007, 7, 0, 852015, 20, 0, 917504, 13, 0, 917505, 13, 0, 917506, 6, 0, 917524, 0, 0, 917525, 0, 0, 917541, 7, 0, 917545, 7, 0, 917551, 20, 0, 983040, 13, 0, 983041, 12, 0, 983058, 0, 0, 983059, 0, 0, 983075, 7, 0, 983087, 41, 0, 983088, 10, 0, 983089, 9, 0, 1048576, 13, 0, 1048577, 16, 0, 1048578, 1, 0, 1048579, 2, 0, 1048599, 0, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 2, 0, 1048615, 8, 0, 1048616, 38, 0, 1048617, 1, 0, 1048618, 1, 0, 1048619, 45, 0, 1048620, 9, 0, 1114112, 13, 0, 1114113, 13, 0, 1114114, 13, 0, 1114115, 16, 0, 1114116, 1, 0, 1114117, 2, 0, 1114129, 0, 0, 1114130, 1, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 15, 0, 1114136, 13, 0, 1114137, 13, 0, 1114138, 13, 0, 1114139, 13, 0, 1114140, 13, 0, 1114141, 13, 0, 1114142, 13, 0, 1114143, 13, 0, 1114144, 17, 0, 1114145, 6, 0, 1114152, 4, 0, 1114153, 5, 0, 1114154, 5, 0, 1114155, 6, 0, 1114163, 42, 0, 1114164, 40, 0, 1179648, 13, 0, 1179649, 13, 0, 1179650, 13, 0, 1179651, 13, 0, 1179652, 13, 0, 1179653, 16, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 15, 0, 1179666, 13, 0, 1179667, 13, 0, 1179668, 13, 0, 1179669, 13, 0, 1179670, 13, 0, 1179671, 13, 0, 1179672, 13, 0, 1179673, 13, 0, 1179674, 13, 0, 1179675, 13, 0, 1179676, 13, 0, 1179677, 13, 0, 1179678, 13, 0, 1179679, 13, 0, 1179680, 12, 0, 1179694, 0, 0, 1179695, 1, 0, 1179696, 1, 0, 1179697, 1, 0, 1179698, 1, 0, 1179699, 28, 0, 1179700, 28, 0, 1179701, 1, 0, 1179702, 1, 0, 1179703, 1, 0, 1179704, 1, 0, 1179705, 1, 0, 1179706, 1, 0, 1179707, 1, 0, 1179708, 1, 0, 1179709, 1, 0, 1179710, 1, 0, 1179711, 1, 0, 1179712, 1, 0, 1179713, 1, 0 )
+tile_data = PoolIntArray( 0, 12, 0, 65536, 12, 0, 131072, 12, 0, 196608, 12, 0, 262144, 16, 0, 262145, 2, 0, 327680, 13, 0, 327681, 13, 0, 327682, 9, 0, 393216, 17, 0, 393217, 6, 0, 458752, 12, 0, 524288, 16, 0, 524289, 2, 0, 589824, 13, 0, 589825, 46, 0, 655360, 13, 0, 655361, 34, 0, 655362, 40, 0, 720896, 13, 0, 720897, 16, 0, 720898, 28, 0, 720899, 2, 0, 786432, 13, 0, 786433, 13, 0, 786434, 13, 0, 786435, 12, 0, 786485, 7, 0, 851968, 13, 0, 851969, 13, 0, 851970, 13, 0, 851971, 6, 0, 852007, 7, 0, 852015, 21, 0, 852019, 7, 0, 917504, 13, 0, 917505, 13, 0, 917506, 6, 0, 917541, 7, 0, 917545, 7, 0, 917551, 20, 0, 917559, 21, 0, 983040, 13, 0, 983041, 12, 0, 983075, 7, 0, 983087, 41, 0, 983088, 10, 0, 983089, 9, 0, 983095, 44, 0, 983096, 1, 0, 983097, 2, 0, 1048576, 13, 0, 1048577, 16, 0, 1048578, 1, 0, 1048579, 2, 0, 1048599, 0, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 2, 0, 1048615, 8, 0, 1048616, 38, 0, 1048617, 1, 0, 1048618, 1, 0, 1048619, 45, 0, 1048620, 9, 0, 1048630, 0, 0, 1048631, 15, 0, 1048632, 17, 0, 1048633, 36, 0, 1048634, 10, 0, 1048635, 9, 0, 1114112, 13, 0, 1114113, 13, 0, 1114114, 13, 0, 1114115, 16, 0, 1114116, 1, 0, 1114117, 2, 0, 1114129, 0, 0, 1114130, 1, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 15, 0, 1114136, 13, 0, 1114137, 13, 0, 1114138, 13, 0, 1114139, 13, 0, 1114140, 13, 0, 1114141, 13, 0, 1114142, 13, 0, 1114143, 13, 0, 1114144, 17, 0, 1114145, 6, 0, 1114152, 4, 0, 1114153, 5, 0, 1114154, 5, 0, 1114155, 6, 0, 1114163, 42, 0, 1114164, 1, 0, 1114165, 1, 0, 1114166, 15, 0, 1114167, 17, 0, 1114168, 6, 0, 1179648, 13, 0, 1179649, 13, 0, 1179650, 13, 0, 1179651, 13, 0, 1179652, 13, 0, 1179653, 16, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 15, 0, 1179666, 13, 0, 1179667, 13, 0, 1179668, 13, 0, 1179669, 13, 0, 1179670, 13, 0, 1179671, 13, 0, 1179672, 13, 0, 1179673, 13, 0, 1179674, 13, 0, 1179675, 13, 0, 1179676, 13, 0, 1179677, 13, 0, 1179678, 13, 0, 1179679, 13, 0, 1179680, 12, 0, 1179694, 0, 0, 1179695, 1, 0, 1179696, 1, 0, 1179697, 1, 0, 1179698, 1, 0, 1179699, 28, 0, 1179700, 13, 0, 1179701, 13, 0, 1179702, 13, 0, 1179703, 12, 0, 1179709, 0, 0, 1179710, 1, 0, 1179711, 1, 0, 1179712, 1, 0, 1179713, 1, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="GroundsetWithGrass"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 9.5788, 313.819 )
 shape = SubResource( 2 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 549.962, 603.47 )
 shape = SubResource( 3 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 801.355, 568.41 )
 shape = SubResource( 4 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 912.967, 545.873 )
 shape = SubResource( 5 )
 one_way_collision_margin = 18.5
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
-position = Vector2( 1294.82, 540.996 )
-shape = SubResource( 5 )
-one_way_collision_margin = 18.5
-
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 108.921, 572.223 )
 shape = SubResource( 6 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 81.0654, 402.831 )
 shape = SubResource( 7 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 41.1642, 420.9 )
 shape = SubResource( 8 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 49.8192, 401.426 )
 shape = SubResource( 9 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 54.3793, 178.557 )
 shape = SubResource( 10 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 46.422, 178.075 )
 shape = SubResource( 11 )
 one_way_collision_margin = 18.5
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="GroundsetWithGrass/StaticBody2D"]
+visible = false
 position = Vector2( 64.8339, 534.23 )
 shape = SubResource( 12 )
 one_way_collision_margin = 18.5
@@ -1631,7 +1636,6 @@ z_index = 1
 motion_mirroring = Vector2( 760, 0 )
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
 position = Vector2( 512.407, 301.705 )
 scale = Vector2( 2.12932, 2.2525 )
 z_index = -1
@@ -2036,8 +2040,16 @@ tile_set = SubResource( 68 )
 cell_size = Vector2( 32, 61 )
 format = 1
 
-[node name="Golem" parent="." instance=ExtResource( 3 )]
-position = Vector2( 676.446, 399.131 )
+<<<<<<< HEAD
+[node name="Bat4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 122.174, 483.464 )
 
-[node name="Wolf" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1003.34, 483.345 )
+[node name="Bat" parent="." instance=ExtResource( 9 )]
+position = Vector2( 467.124, 520.351 )
+
+[node name="Bat2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 344.782, 517.968 )
+=======
+[node name="Golem" parent="." instance=ExtResource( 3 )]
+position = Vector2( 469.299, 562.399 )
+>>>>>>> f51bdeb0ff685f5df1cf7dd701ce62418e1c9561
