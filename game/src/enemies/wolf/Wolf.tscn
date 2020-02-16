@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Wolf/noBKG_WolfDeath_strip.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Wolf/noBKG_WolfAttack_strip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Wolf/noBKG_WolfIdle_strip.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Wolf/noBKG_WolfRun_strip.png" type="Texture" id=4]
+[ext_resource path="res://src/enemies/wolf/Wolf.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ATTACK"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 15 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DEATH"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Death:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 17 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLE"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 11 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RUN"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[node name="Wolf" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Idle" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 12
+
+[node name="Run" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 8
+
+[node name="Attack" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+hframes = 16
+frame = 11
+
+[node name="Death" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+hframes = 18
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.7
+anims/ATTACK = SubResource( 1 )
+anims/DEATH = SubResource( 2 )
+anims/IDLE = SubResource( 3 )
+anims/RUN = SubResource( 4 )
