@@ -140,7 +140,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 14, 15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 25, 0 ), Vector2( 8, 0 ), Vector2( 5, 0 ), Vector2( -2, 0 ), Vector2( -14, 0 ), Vector2( -20, 0 ), Vector2( -32, 0 ), Vector2( -49, 0 ), Vector2( -56, 0 ), Vector2( -67, 0 ) ]
+"values": [ Vector2( 25, 0 ), Vector2( 8, 10 ), Vector2( 5, 15 ), Vector2( -2, 15 ), Vector2( -14, 15 ), Vector2( -20, 15 ), Vector2( -32, 15 ), Vector2( -49, 15 ), Vector2( -56, 10 ), Vector2( -67, 0 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -149,11 +149,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 7 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 7, 13 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_jump_startup_ended"
+}, {
+"args": [  ],
+"method": "_fall_pause"
 } ]
 }
 
@@ -262,9 +265,8 @@ frame = 7
 [node name="Jump" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 11 )
-offset = Vector2( 8, 0 )
+offset = Vector2( 25, 0 )
 hframes = 25
-frame = 7
 
 [node name="JumpEffect" type="Sprite" parent="."]
 visible = false
