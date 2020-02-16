@@ -57,6 +57,8 @@ func play(animation_name, direction):
 	animation_name = animation_name.to_upper()
 	if animation_lookup.has(animation_name):
 		_switch_to(animation_name)
+		if animation_name == "JUMP":
+			_jump_start_speedup()
 
 func _switch_to(animation_name):
 	if (animation_name != current_playing):
@@ -82,6 +84,8 @@ func face(animation_name, direction):
 	animation_lookup[animation_name].set_flip_h(flip_sprite)
 
 func _on_Player_play(animation, direction):
+	if animation == "JUMP":
+		_jump_start_speedup()
 	play(animation, direction)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -138,9 +142,11 @@ func _on_Player_start_fall(direction):
 	player.play()
 	_fall_pause()
 
+func _jump_start_speedup():
+	player.set_speed_scale(animation_speed["JUMP"] * 2)
 
-
-
+func _jump_stop_speedup():
+	player.set_speed_scale(animation_speed["JUMP"])
 
 
 

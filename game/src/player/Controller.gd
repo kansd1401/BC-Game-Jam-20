@@ -12,19 +12,16 @@ var last_input = ""
 func _ready():
 	pass # Replace with function body.
 
-
 # ui_{left, right, up, down}
 func _physics_process(_delta):
 	get_input()
 
 func get_input():
-	#print(event)
 	# Will have to tweak with priority here
 	if Input.is_action_pressed("ui_left"):
 		emit_signal("move_left")
 		last_input = "move_left"
 	elif Input.is_action_pressed("ui_right"):
-		print("MOVE ME")
 		emit_signal("move_right")
 		last_input = "move_right"
 	elif Input.is_action_pressed("ui_up"):
