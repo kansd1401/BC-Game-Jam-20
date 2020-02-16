@@ -39,6 +39,11 @@ shape = SubResource( 1 )
 position = Vector2( -6.85155, 4.47985 )
 cast_to = Vector2( 0, 25 )
 
+[node name="CheckLeftGround" type="RayCast2D" parent="."]
+position = Vector2( -6.852, 4.48 )
+enabled = true
+cast_to = Vector2( 0, 25 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
@@ -75,11 +80,15 @@ position = Vector2( -46.1387, -46.1386 )
 shape = SubResource( 3 )
 [connection signal="land_jump" from="." to="PlayerAnimation" method="_on_Player_land_jump"]
 [connection signal="play" from="." to="PlayerAnimation" method="_on_Player_play"]
+[connection signal="start_fall" from="." to="PlayerAnimation" method="_on_Player_start_fall"]
 [connection signal="attack" from="Controller" to="." method="_on_Controller_attack"]
 [connection signal="idle" from="Controller" to="." method="_on_Controller_idle"]
 [connection signal="jump" from="Controller" to="." method="_on_Controller_jump"]
 [connection signal="move_left" from="Controller" to="." method="_on_Controller_move_left"]
 [connection signal="move_right" from="Controller" to="." method="_on_Controller_move_right"]
+[connection signal="attack_impact_1" from="PlayerAnimation" to="." method="_on_PlayerAnimation_attack_impact_1"]
+[connection signal="attack_impact_2" from="PlayerAnimation" to="." method="_on_PlayerAnimation_attack_impact_2"]
+[connection signal="attack_impact_3" from="PlayerAnimation" to="." method="_on_PlayerAnimation_attack_impact_3"]
 [connection signal="fall_paused" from="PlayerAnimation" to="." method="_on_PlayerAnimation_fall_paused"]
 [connection signal="jump_startup_ended" from="PlayerAnimation" to="." method="_on_PlayerAnimation_jump_startup_ended"]
 [connection signal="please_idle" from="PlayerAnimation" to="." method="_on_PlayerAnimation_please_idle"]

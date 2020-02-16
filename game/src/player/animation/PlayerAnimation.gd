@@ -3,6 +3,9 @@ extends Node2D
 signal please_idle
 signal jump_startup_ended
 signal fall_paused
+signal attack_impact_1
+signal attack_impact_2
+signal attack_impact_3
 
 onready var player = $AnimationPlayer
 onready var effect_player = $EffectPlayer
@@ -33,7 +36,7 @@ var animation_speed = {
 	"ATTACK2": 1,
 	"ATTACK3": 1,
 	"DASH": 1,
-	"DEATH": 1,
+	"DEATH": 0.2,
 	"LEAP": 1,
 	"SPIN": 1,
 	"TAUNT": 1
@@ -106,13 +109,22 @@ func _jump_offset(x, y):
 	$Jump.offset = Vector2(x_offset, y_offset)
 
 func _attack_impact_1():
-	pass
+	emit_signal("attack_impact_1")
 
 func _attack_impact_2():
-	pass
+	emit_signal("attack_impact_2")
 
 func _attack_impact_3():
-	pass
+	emit_signal("attack_impact_3")
+
+func _on_Player_start_fall():
+	animation_lookup[current_playing].hide()
+	animation_lookup["JUMP"].show()
+	player.play("JUMP")
+	player.seek(13)
+	player.set_speed_scale(animation_speed["JUMP"])
+	player.play()
+
 
 
 
