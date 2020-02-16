@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/player/animation/PlayerAnimation.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/spr_Idle_strip.png" type="Texture" id=2]
@@ -12,10 +12,9 @@
 [ext_resource path="res://Assets/Player/spr_Taunt_strip.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
-resource_name = "ATTACK"
-loop = true
+resource_name = "ATTACK1"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Attack:frame")
+tracks/0/path = NodePath("Attack1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -24,11 +23,41 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.948376 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 29 ]
+"values": [ 0, 11 ]
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "DASH"
+resource_name = "ATTACK2"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 11, 22 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ATTACK3"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 22, 29 ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
 step = 0.05
@@ -57,8 +86,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( -16, 0 ), Vector2( -31, 0 ), Vector2( -46, 0 ), Vector2( -52, 0 ), Vector2( -59, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "DEATH"
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Death:frame")
@@ -73,8 +101,7 @@ tracks/0/keys = {
 "values": [ 0, 39 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "IDLE"
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Idle:frame")
@@ -89,8 +116,7 @@ tracks/0/keys = {
 "values": [ 0, 15 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "JUMP"
+[sub_resource type="Animation" id=7]
 length = 2.4
 loop = true
 tracks/0/type = "value"
@@ -115,11 +141,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 25, 0 ), Vector2( 8, 0 ), Vector2( -4, 0 ), Vector2( -13, 0 ), Vector2( -18, 0 ), Vector2( -26, 0 ), Vector2( -44, 0 ), Vector2( -50, 0 ), Vector2( -67, 0 ) ]
+"values": [ Vector2( 25, 0 ), Vector2( 8, 10 ), Vector2( -4, 15 ), Vector2( -13, 15 ), Vector2( -18, 15 ), Vector2( -26, 18 ), Vector2( -44, 15 ), Vector2( -50, 10 ), Vector2( -67, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "LEAP"
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Leap:frame")
@@ -134,8 +159,7 @@ tracks/0/keys = {
 "values": [ 0, 39 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "SPIN"
+[sub_resource type="Animation" id=9]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -163,8 +187,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -6, 0 ), Vector2( -8, 0 ), Vector2( -12, 0 ), Vector2( -14, 0 ), Vector2( -16, 0 ), Vector2( -18, 0 ), Vector2( -23, 0 ), Vector2( -23, 0 ), Vector2( -25, 0 ), Vector2( -30, 0 ), Vector2( -31, 0 ), Vector2( -33, 0 ), Vector2( -34, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "TAUNT"
+[sub_resource type="Animation" id=10]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Taunt:frame")
@@ -179,8 +202,7 @@ tracks/0/keys = {
 "values": [ 0, 17 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "WALK"
+[sub_resource type="Animation" id=11]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Walk:frame")
@@ -199,6 +221,7 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="Idle" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 hframes = 16
 
@@ -209,16 +232,29 @@ hframes = 8
 frame = 1
 
 [node name="Jump" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
-offset = Vector2( -13, 0 )
+offset = Vector2( 25, 0 )
 hframes = 25
-frame = 10
+frame = 3
 
-[node name="Attack" type="Sprite" parent="."]
+[node name="Attack1" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 24
+frame = 11
+
+[node name="Attack2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+hframes = 30
+frame = 22
+
+[node name="Attack3" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+hframes = 30
+frame = 29
 
 [node name="Dash" type="Sprite" parent="."]
 visible = false
@@ -248,12 +284,15 @@ texture = ExtResource( 10 )
 hframes = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ATTACK = SubResource( 1 )
-anims/DASH = SubResource( 2 )
-anims/DEATH = SubResource( 3 )
-anims/IDLE = SubResource( 4 )
-anims/JUMP = SubResource( 5 )
-anims/LEAP = SubResource( 6 )
-anims/SPIN = SubResource( 7 )
-anims/TAUNT = SubResource( 8 )
-anims/WALK = SubResource( 9 )
+anims/ATTACK1 = SubResource( 1 )
+anims/ATTACK2 = SubResource( 2 )
+anims/ATTACK3 = SubResource( 3 )
+anims/DASH = SubResource( 4 )
+anims/DEATH = SubResource( 5 )
+anims/IDLE = SubResource( 6 )
+anims/JUMP = SubResource( 7 )
+anims/LEAP = SubResource( 8 )
+anims/SPIN = SubResource( 9 )
+anims/TAUNT = SubResource( 10 )
+anims/WALK = SubResource( 11 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

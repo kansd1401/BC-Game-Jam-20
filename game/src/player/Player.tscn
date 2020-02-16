@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/player/animation/PlayerAnimation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Controller.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=4]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.9371, 15.93 )
+
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 4 )
 
 [node name="Controller" parent="." instance=ExtResource( 3 )]
@@ -12,9 +15,15 @@ script = ExtResource( 4 )
 [node name="PlayerAnimation" parent="." instance=ExtResource( 2 )]
 
 [node name="Input_Buffer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -6.993, 11.9277 )
+shape = SubResource( 1 )
+[connection signal="play" from="." to="PlayerAnimation" method="_on_Player_play"]
 [connection signal="attack" from="Controller" to="." method="_on_Controller_attack"]
 [connection signal="idle" from="Controller" to="." method="_on_Controller_idle"]
 [connection signal="jump" from="Controller" to="." method="_on_Controller_jump"]
 [connection signal="move_left" from="Controller" to="." method="_on_Controller_move_left"]
 [connection signal="move_right" from="Controller" to="." method="_on_Controller_move_right"]
+[connection signal="please_idle" from="PlayerAnimation" to="." method="_on_PlayerAnimation_please_idle"]
 [connection signal="timeout" from="Input_Buffer" to="." method="_on_Input_Buffer_timeout"]
