@@ -4,6 +4,7 @@ var velocity = Vector2()
 var speed = 0
 var GRAVITY = 10
 var direction = Vector2(1, 1)
+var bat_location = Vector2()
 var flipped = false
 var hp = 100
 var engaged = false
@@ -21,6 +22,11 @@ func _process(delta):
 	velocity.x = speed * direction.x 
 	velocity.y = speed * direction.y
 	print(direction)
+	
+	bat_location = $BatAnimation.position()
+	if bat_location.y < 490:
+		direction.y = 1
+		
 
 	
 	$BatAnimation/Flight.show()
@@ -28,6 +34,7 @@ func _process(delta):
 	$BatAnimation/Death.hide()
 	$BatAnimation/AnimationPlayer.play("Flight")
 	
+		
 	if $Rays/FeetCollision.is_colliding():
 		print("feet touched something")
 		change_direction("feet")
@@ -66,8 +73,19 @@ func change_direction(direction_change):
 func _on_Patrol_timeout():
 	speed = 0
 	$Timers/Idle.start()
+	
 
 
 func _on_Idle_timeout():
 	speed = 50
+	if randi() == 1:
+		direction.x = 1
+	else:
+		direction.x = -1
+	
+	if randi() == 1:
+		direction.y = 1
+	else:
+		direction.y = -1
+		
 	$Timers/Patrol.start()
