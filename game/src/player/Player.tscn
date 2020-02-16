@@ -44,7 +44,7 @@ cast_to = Vector2( 0, 25 )
 [node name="CheckLeftGround" type="RayCast2D" parent="."]
 position = Vector2( -6.852, 4.48 )
 enabled = true
-cast_to = Vector2( 0, 25 )
+cast_to = Vector2( 0, 26 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

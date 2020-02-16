@@ -33,6 +33,7 @@ export var attack_damage_2 = 60
 export var attack_damage_3 = 80
 
 func _ready():
+	_on_PlayerAnimation_please_idle()
 	input_buffer.timer.set_wait_time(0.2)
 
 func init(x, y):
@@ -62,7 +63,7 @@ func _process(delta):
 		move_and_slide(movement)
 		
 		if $CheckGround.is_enabled():
-			if $CheckGround.get_collider():
+			if $CheckGround.is_colliding():
 				lock_horizontal = true
 				reset_horizontal_movement()
 				$PlayerAnimation._fall_resume()
@@ -70,9 +71,12 @@ func _process(delta):
 				$CheckLeftGround.set_enabled(true)
 		
 		if $CheckLeftGround.is_enabled():
-			if !$CheckLeftGround.get_collider():
+			$CheckLeftGround.force_raycast_update()
+			if !$CheckLeftGround.is_colliding():
 				current_state.mode = "JUMP"
-				emit_signal("start_fall")
+				print("Start fall puh-lease")
+				emit_signal("start_fall", current_state.facing)
+				$CheckLeftGround.set_enabled(false)
 	else:
 		pass
 
