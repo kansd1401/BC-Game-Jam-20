@@ -74,8 +74,10 @@ func _on_Controller_jump():
 		input_buffer.timer.start()
 	else :
 		current_state.mode = "JUMP"
-		movement.y += jump_strength
 		emit_signal("play", "JUMP", current_state.facing)
+
+func _on_PlayerAnimation_jump_startup_ended():
+	movement.y += jump_strength
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
@@ -114,3 +116,7 @@ func _on_PlayerAnimation_please_idle():
 		return
 	
 	current_attack = 1
+
+func take_damage():
+	pass
+

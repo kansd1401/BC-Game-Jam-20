@@ -1,6 +1,7 @@
 extends Node2D
 
 signal please_idle
+signal jump_startup_ended
 
 onready var player = $AnimationPlayer
 onready var effect_player = $EffectPlayer
@@ -86,7 +87,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		_switch_to("IDLE")
 		emit_signal("please_idle")
 
-
+func _jump_startup_ended():
+	emit_signal("jump_startup_ended")
 
 
 
