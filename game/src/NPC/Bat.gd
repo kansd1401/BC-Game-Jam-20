@@ -21,12 +21,17 @@ func _ready():
 func _process(delta):
 	velocity.x = speed * direction.x 
 	velocity.y = speed * direction.y
-	print(direction)
-	
-	bat_location = $BatAnimation.position()
-	if bat_location.y < 490:
+	print(direction.x)
+	$Rays/ForwardCollision.position.x *= direction.x
+	$Rays/ForwardCollision.cast_to.x = direction.x
+	$Rays/HeadCollision.position.x *= direction.x
+	$Rays/FeetCollision.position.x *= direction.x
+
+	bat_location = get_position()
+	print(bat_location.y)
+	if bat_location.y < 350:
 		direction.y = 1
-		
+#
 
 	
 	$BatAnimation/Flight.show()
@@ -50,10 +55,6 @@ func _process(delta):
 func change_direction(direction_change):
 	if direction_change == "forward":
 		direction.x = direction.x * -1
-		$Rays/ForwardCollision.position.x *= -1
-		$Rays/ForwardCollision.cast_to.x *= -1
-		$Rays/HeadCollision.position.x *= -1
-		$Rays/FeetCollision.position.x *= -1
 		velocity.x = speed * direction.x
 		move_and_slide(velocity)
 	elif direction_change == "feet":
@@ -80,12 +81,16 @@ func _on_Idle_timeout():
 	speed = 50
 	if randi() == 1:
 		direction.x = 1
+		print("changing direction to the right")
 	else:
 		direction.x = -1
-	
+		print("changing direction to the left")
+
 	if randi() == 1:
 		direction.y = 1
+		print("changing direction to the down")
 	else:
 		direction.y = -1
-		
+		print("changing direction to the up")
+#
 	$Timers/Patrol.start()

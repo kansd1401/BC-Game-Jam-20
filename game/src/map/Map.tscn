@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg2_strip.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg_strip.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=6]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageOneWayTileSetNoBkg_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageSpikesNoBkg_strip.png" type="Texture" id=8]
+[ext_resource path="res://src/NPC/Bat.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "spr_VillageTileSetNoBkg_strip.png 0"
@@ -2032,3 +2033,6 @@ format = 1
 tile_set = SubResource( 68 )
 cell_size = Vector2( 32, 61 )
 format = 1
+
+[node name="Bat" parent="." instance=ExtResource( 9 )]
+position = Vector2( 366.002, 379.692 )
