@@ -68,6 +68,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ATTACK1" || anim_name == "ATTACK2" || anim_name == "ATTACK3":
 		_switch_to("IDLE")
 		emit_signal("please_idle")
+	
+	if anim_name == "JUMP":
+		_switch_to("IDLE")
+		emit_signal("please_idle")
 
 
 

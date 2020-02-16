@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal play(animation, direction)
 
 var movement = Vector2()
-var gravity = 400
+var gravity = 200
 
 onready var input_buffer = {
 	"input": "",
@@ -19,6 +19,7 @@ var current_state = {
 var current_attack = 1
 
 export var speed = 4
+export var jump_strength = -220
 export var max_speed = 100
 export var max_fall = 800
 
@@ -38,6 +39,9 @@ func _process(delta):
 		movement.x += speed
 		current_state.facing = "RIGHT"
 		emit_signal("play", "WALK", current_state.facing)
+	if current_state.mode == "JUMP":
+		movement.y += jump_strength
+		emit_signal("play", "JUMP", current_state.facing)
 	if current_state.mode == "ATTACK":
 		movement = Vector2()
 		emit_signal("play", "ATTACK1", current_state.facing)
@@ -45,7 +49,7 @@ func _process(delta):
 		emit_signal("play", "IDLE", current_state.facing)
 		movement = Vector2()
 	movement.x = clamp(movement.x, -max_speed, max_speed)
-	movement.y = clamp(gravity, -max_fall, max_fall)
+	movement.y += clamp(gravity, -max_fall, max_fall)
 	move_and_slide(movement)
 	
 
@@ -66,9 +70,11 @@ func _on_Controller_attack():
 		current_state.mode = "ATTACK"
 
 func _on_Controller_jump():
-	if current_state.mode != "IDLE":
+	if current_state.mode != "IDLE" && current_state.mode != "MOVE_LEFT" && current_state.mode != "MOVE_RIGHT":
 		input_buffer.input = "JUMP"
 		input_buffer.timer.start()
+	else :
+		current_state.mode = "JUMP"
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
@@ -95,7 +101,7 @@ func _on_Controller_idle():
 		current_state.mode = "IDLE"
 
 
-func _on_PlayerAnimation_please_idle():
+func _on_PlayerAnimation_please_idle():	
 	if input_buffer.input == "":
 		current_state.mode = "IDLE"
 	elif input_buffer.input == "ATTACK":

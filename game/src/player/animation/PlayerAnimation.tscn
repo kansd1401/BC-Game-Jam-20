@@ -59,7 +59,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 length = 0.8
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Dash:frame")
@@ -87,7 +86,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Death:frame")
 tracks/0/interp = 1
@@ -118,7 +116,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 2.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Jump:frame")
 tracks/0/interp = 1
@@ -145,7 +142,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Leap:frame")
 tracks/0/interp = 1
@@ -161,7 +157,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 length = 3.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spin:frame")
 tracks/0/interp = 1
@@ -188,7 +183,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=10]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Taunt:frame")
 tracks/0/interp = 1
@@ -224,19 +218,20 @@ script = ExtResource( 1 )
 visible = false
 texture = ExtResource( 2 )
 hframes = 16
+frame = 15
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 3 )
 hframes = 8
-frame = 1
+frame = 7
 
 [node name="Jump" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
-offset = Vector2( 25, 0 )
+offset = Vector2( -67, 0 )
 hframes = 25
-frame = 3
+frame = 15
 
 [node name="Attack1" type="Sprite" parent="."]
 visible = false
@@ -261,27 +256,32 @@ visible = false
 texture = ExtResource( 6 )
 offset = Vector2( -59, 0 )
 hframes = 8
-frame = 6
+frame = 7
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 7 )
 hframes = 40
+frame = 39
 
 [node name="Leap" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 8 )
 hframes = 40
+frame = 39
 
 [node name="Spin" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 9 )
+offset = Vector2( -23, 0 )
 hframes = 30
+frame = 16
 
 [node name="Taunt" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 10 )
 hframes = 18
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ATTACK1 = SubResource( 1 )
