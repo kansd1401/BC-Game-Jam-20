@@ -34,6 +34,14 @@ one_shot = true
 wait_time = 6.0
 one_shot = true
 
+[node name="Attack" type="Timer" parent="Timers"]
+wait_time = 1.1
+one_shot = true
+
+[node name="Death" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="EdgeDetector" type="RayCast2D" parent="Rays"]
@@ -59,6 +67,8 @@ position = Vector2( 1.52588e-05, -5.17654 )
 shape = SubResource( 3 )
 [connection signal="timeout" from="Timers/Idle" to="." method="_on_Idle_timeout"]
 [connection signal="timeout" from="Timers/Walk" to="." method="_on_Walk_timeout"]
+[connection signal="timeout" from="Timers/Attack" to="." method="_on_Attack_timeout"]
+[connection signal="timeout" from="Timers/Death" to="." method="_on_Death_timeout"]
 [connection signal="body_entered" from="Targetting" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Targetting" to="." method="_on_Targetting_body_exited"]
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]

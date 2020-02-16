@@ -15,7 +15,6 @@ var walking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$GolemAnimation.connect("attack_finished",self,"_attack_finished")
 	$Timers/Idle.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,34 +27,36 @@ func _process(delta):
 		elif (position.x - target.position.x) < 0 && direction < 0:
 			change_direction()
 #	print(attacking)
-	print(velocity.x)
-	print(idling)
-	print(attacking)
-	print(walking)
-	if inRange && velocity.x == 0 && !attacking:
-		$GolemAnimation/Walk.hide()
-		$GolemAnimation/IdleE.hide()
-		$GolemAnimation/Attack.show()
-		$GolemAnimation/AnimationPlayer.play("Attack")
-		attacking = true
-		idling = false
-		walking = false
-	elif velocity.x == 0 && !inRange && !idling:
-		$GolemAnimation/Walk.hide()
-		$GolemAnimation/IdleE.show()
-		$GolemAnimation/Attack.hide()
-		$GolemAnimation/AnimationPlayer.play("IdleE")
-		attacking = false
-		idling = true
-		walking = false
-	elif velocity.x != 0 && !walking:
-		$GolemAnimation/Walk.show()
-		$GolemAnimation/IdleE.hide()
-		$GolemAnimation/Attack.hide()
-		$GolemAnimation/AnimationPlayer.play("Walk")
-		attacking = false
-		idling = false
-		walking = true
+#	print(velocity.x)
+#	print(idling)
+#	print(attacking)
+#	print(walking)
+	if hp > 0:
+		if inRange && velocity.x == 0 && !attacking:
+			$GolemAnimation/Walk.hide()
+			$GolemAnimation/IdleE.hide()
+			$GolemAnimation/Attack.show()
+			$GolemAnimation/AnimationPlayer.play("Attack")
+			$Timers/Attack.start()
+			attacking = true
+			idling = false
+			walking = false
+		elif velocity.x == 0 && !inRange && !idling:
+			$GolemAnimation/Walk.hide()
+			$GolemAnimation/IdleE.show()
+			$GolemAnimation/Attack.hide()
+			$GolemAnimation/AnimationPlayer.play("IdleE")
+			attacking = false
+			idling = true
+			walking = false
+		elif velocity.x != 0 && !walking:
+			$GolemAnimation/Walk.show()
+			$GolemAnimation/IdleE.hide()
+			$GolemAnimation/Attack.hide()
+			$GolemAnimation/AnimationPlayer.play("Walk")
+			attacking = false
+			idling = false
+			walking = true
 	if !$Rays/EdgeDetector.is_colliding():
 		print("edge")
 		change_direction()
@@ -82,10 +83,21 @@ func change_direction():
 	$GolemAnimation/IdleE.flip_h = flipped
 	$GolemAnimation/Walk.flip_h = flipped
 
+func damage_npc(dam):
+	hp = hp-dam
+	if hp <= 0:
+		$GolemAnimation/Walk.hide()
+		$GolemAnimation/IdleE.hide()
+		$GolemAnimation/Attack.hide()
+		$GolemAnimation/Death.show()
+		$GolemAnimation/AnimationPlayer.play("Death")
+		$Timers/Death.start()
+
 func _on_Walk_timeout():
 	if !engaged:
 		speed = 0
 		$Timers/Idle.start()
+	damage_npc(100)
 
 
 func _on_Idle_timeout():
@@ -122,3 +134,11 @@ func _attack_finished():
 	walking = false
 	idling = false
 	print("damage time")
+
+
+func _on_Attack_timeout():
+	if inRange:
+		target.damage_player()
+
+func _on_Death_timeout():
+	queue_free()
