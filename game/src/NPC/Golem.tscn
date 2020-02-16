@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/NPC/Animations/GolemAnimation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Golem.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.708, 18.4092 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 76.2093, 12.617 )
 
 [node name="Golem" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -39,5 +42,12 @@ cast_to = Vector2( 0, 12 )
 position = Vector2( 15, 0 )
 enabled = true
 cast_to = Vector2( 10, 0 )
+
+[node name="Targetting" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Targetting"]
+position = Vector2( 1.52588e-05, -5.17654 )
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timers/Idle" to="." method="_on_Idle_timeout"]
 [connection signal="timeout" from="Timers/Walk" to="." method="_on_Walk_timeout"]
+[connection signal="body_entered" from="Targetting" to="." method="_on_Area2D_body_entered"]
