@@ -125,8 +125,9 @@ func _on_PlayerAnimation_please_idle():
 	
 	current_attack = 1
 
-func damage_player():
-	print("ouch")
+func damage_player(dam):
+	hp -= dam
+	print(dam)
 
 
 
