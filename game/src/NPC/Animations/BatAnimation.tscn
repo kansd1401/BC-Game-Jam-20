@@ -61,7 +61,7 @@ tracks/0/keys = {
 visible = false
 texture = ExtResource( 1 )
 hframes = 8
-frame = 7
+frame = 5
 
 [node name="Attack" type="Sprite" parent="."]
 visible = false
@@ -69,9 +69,9 @@ position = Vector2( 0.484283, 0 )
 scale = Vector2( 1.01211, 1 )
 texture = ExtResource( 2 )
 hframes = 10
-frame = 2
 
 [node name="Death" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 hframes = 10
 frame = 2
