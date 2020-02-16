@@ -4,6 +4,7 @@ signal play(animation, direction)
 
 var movement = Vector2()
 var gravity = 20
+var hp = 100
 
 onready var input_buffer = {
 	"input": "",
@@ -117,6 +118,6 @@ func _on_PlayerAnimation_please_idle():
 	
 	current_attack = 1
 
-func take_damage():
+func damage_player():
 	pass
 
