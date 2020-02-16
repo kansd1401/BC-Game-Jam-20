@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 signal play(animation, direction)
+signal land_jump
 
 var movement = Vector2()
 var gravity = 20
+var hp = 100
 
 onready var input_buffer = {
 	"input": "",
@@ -51,6 +53,12 @@ func _process(delta):
 	movement.y += clamp(gravity, -max_fall, max_fall)
 	move_and_slide(movement)
 	
+	if $CheckGround.is_enabled():
+		if $CheckGround.get_collider():
+			print("DISABLE ME")
+			$PlayerAnimation._fall_resume()
+			$CheckGround.set_enabled(false)
+	
 
 # Collision will have to be managed by player state, and at times will change a little wildly.
 func update_collision():
@@ -72,7 +80,7 @@ func _on_Controller_jump():
 	if current_state.mode != "IDLE" && current_state.mode != "MOVE_LEFT" && current_state.mode != "MOVE_RIGHT":
 		input_buffer.input = "JUMP"
 		input_buffer.timer.start()
-	else :
+	else:
 		current_state.mode = "JUMP"
 		emit_signal("play", "JUMP", current_state.facing)
 
@@ -104,7 +112,7 @@ func _on_Controller_idle():
 		current_state.mode = "IDLE"
 
 
-func _on_PlayerAnimation_please_idle():	
+func _on_PlayerAnimation_please_idle():
 	if input_buffer.input == "":
 		current_state.mode = "IDLE"
 	elif input_buffer.input == "ATTACK":
@@ -117,6 +125,10 @@ func _on_PlayerAnimation_please_idle():
 	
 	current_attack = 1
 
-func take_damage():
-	pass
+func damage_player():
+	print("ouch")
 
+
+
+func _on_PlayerAnimation_fall_paused():
+	$CheckGround.set_enabled(true)
