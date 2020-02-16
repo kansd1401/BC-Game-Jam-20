@@ -49,7 +49,8 @@ var reviving = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	play("JUMP", "LEFT")
+	play("JUMP", "RIGHT")
 
 func play(animation_name, direction):
 	face(animation_name, direction)
@@ -125,14 +126,17 @@ func _attack_impact_2():
 func _attack_impact_3():
 	emit_signal("attack_impact_3")
 
-func _on_Player_start_fall():
+func _on_Player_start_fall(direction):
+	face("JUMP", direction)
 	animation_lookup[current_playing].hide()
 	current_playing = "JUMP"
 	animation_lookup["JUMP"].show()
 	player.play("JUMP")
-	player.seek(13)
+	player.seek(13, true)
+	_jump_offset(-49, 15)
 	player.set_speed_scale(animation_speed["JUMP"])
 	player.play()
+	_fall_pause()
 
 
 
