@@ -4,7 +4,9 @@
 [ext_resource path="res://Assets/Wolf/noBKG_WolfAttack_strip.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Wolf/noBKG_WolfIdle_strip.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Wolf/noBKG_WolfRun_strip.png" type="Texture" id=4]
-[ext_resource path="res://src/enemies/wolf/Wolf.gd" type="Script" id=5]
+[ext_resource path="res://src/NPC/wolf/WolfAnimation.gd" type="Script" id=5]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK"
@@ -70,7 +72,7 @@ tracks/0/keys = {
 "values": [ 0, 7 ]
 }
 
-[node name="Wolf" type="Node2D"]
+[node name="WolfAnimation" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Idle" type="Sprite" parent="."]
@@ -86,7 +88,7 @@ hframes = 8
 visible = false
 texture = ExtResource( 2 )
 hframes = 16
-frame = 11
+frame = 1
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
