@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg2_strip.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg_strip.png" type="Texture" id=2]
-[ext_resource path="res://src/NPC/Golem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/NPC/wolf/Wolf.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_BackgroundPropsNoBkg_strip.png" type="Texture" id=5]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=6]
@@ -1548,11 +1548,15 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 56, 0, 56 )
 [node name="Map" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 802.799, 286.976 )
+position = Vector2( 235.423, 538.31 )
 z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+
+[node name="Wolf" parent="." instance=ExtResource( 3 )]
+position = Vector2( 262.055, 228.68 )
+z_index = 1
 
 [node name="GroundsetWithGrass" type="TileMap" parent="."]
 z_index = 1
@@ -1622,6 +1626,7 @@ one_way_collision_margin = 18.5
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 z_index = 1
 motion_mirroring = Vector2( 760, 0 )
 
@@ -2030,7 +2035,6 @@ tile_set = SubResource( 68 )
 cell_size = Vector2( 32, 61 )
 format = 1
 
-<<<<<<< HEAD
 [node name="Bat4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 122.174, 483.464 )
 
@@ -2039,7 +2043,3 @@ position = Vector2( 467.124, 520.351 )
 
 [node name="Bat2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 344.782, 517.968 )
-=======
-[node name="Golem" parent="." instance=ExtResource( 3 )]
-position = Vector2( 469.299, 562.399 )
->>>>>>> f51bdeb0ff685f5df1cf7dd701ce62418e1c9561
