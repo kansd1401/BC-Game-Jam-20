@@ -45,7 +45,6 @@ cast_to = Vector2( 0, 12 )
 position = Vector2( 15, 0 )
 enabled = true
 cast_to = Vector2( 10, 0 )
-collide_with_bodies = false
 
 [node name="Targetting" type="Area2D" parent="."]
 

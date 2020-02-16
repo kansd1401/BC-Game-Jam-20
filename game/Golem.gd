@@ -9,10 +9,13 @@ var hp = 100
 var engaged = false
 var target = null
 var inRange = false
+var idling = false
+var attacking = false
+var walking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	$GolemAnimation.connect("attack_finished",self,"_attack_finished")
 	$Timers/Idle.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,30 +27,44 @@ func _process(delta):
 			change_direction()
 		elif (position.x - target.position.x) < 0 && direction < 0:
 			change_direction()
-	if inRange:
+#	print(attacking)
+	print(velocity.x)
+	print(idling)
+	print(attacking)
+	print(walking)
+	if inRange && velocity.x == 0 && !attacking:
 		$GolemAnimation/Walk.hide()
 		$GolemAnimation/IdleE.hide()
 		$GolemAnimation/Attack.show()
 		$GolemAnimation/AnimationPlayer.play("Attack")
-	elif velocity.x == 0 :
+		attacking = true
+		idling = false
+		walking = false
+	elif velocity.x == 0 && !inRange && !idling:
 		$GolemAnimation/Walk.hide()
 		$GolemAnimation/IdleE.show()
 		$GolemAnimation/Attack.hide()
 		$GolemAnimation/AnimationPlayer.play("IdleE")
-	else:
+		attacking = false
+		idling = true
+		walking = false
+	elif velocity.x != 0 && !walking:
 		$GolemAnimation/Walk.show()
 		$GolemAnimation/IdleE.hide()
 		$GolemAnimation/Attack.hide()
 		$GolemAnimation/AnimationPlayer.play("Walk")
+		attacking = false
+		idling = false
+		walking = true
 	if !$Rays/EdgeDetector.is_colliding():
 		print("edge")
 		change_direction()
 	else:
 		velocity.y = 0
 	if $Rays/WallDetector.is_colliding():
-#		if $Rays/WallDetector.get_collider().get(hp) == null:
-		print("wall")
-		change_direction()
+		if $Rays/WallDetector.get_collider().get("hp") == null:
+			print("wall")
+			change_direction()
 	move_and_slide(velocity)
 
 func change_direction():
@@ -66,13 +83,15 @@ func change_direction():
 	$GolemAnimation/Walk.flip_h = flipped
 
 func _on_Walk_timeout():
-	speed = 0
-	$Timers/Idle.start()
+	if !engaged:
+		speed = 0
+		$Timers/Idle.start()
 
 
 func _on_Idle_timeout():
-	speed = 30
-	$Timers/Walk.start()
+	if !engaged:
+		speed = 30
+		$Timers/Walk.start()
 
 
 func _on_Area2D_body_entered(body):
@@ -93,8 +112,13 @@ func _on_Range_body_entered(body):
 		speed = 0
 		inRange = true
 
-
 func _on_Range_body_exited(body):
 	if body == target:
 		speed = 30
 		inRange = false
+
+func _attack_finished():
+	attacking = false
+	walking = false
+	idling = false
+	print("damage time")
