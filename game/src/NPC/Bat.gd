@@ -20,7 +20,7 @@ func _ready():
 func _process(delta):
 	velocity.x = speed * direction.x 
 	velocity.y = speed * direction.y
-	
+	print(direction)
 
 	
 	$BatAnimation/Flight.show()
@@ -49,9 +49,11 @@ func change_direction(direction_change):
 		$Rays/FeetCollision.position.x *= -1
 		velocity.x = speed * direction.x
 		move_and_slide(velocity)
+	elif direction_change == "feet":
+		direction.y = -1
 	else:
-		direction.y = direction.y * -1
-		print("change directions not forward")
+		direction.y = 1
+		
 		
 	if direction.x == 1:
 		flipped = false
@@ -67,5 +69,5 @@ func _on_Patrol_timeout():
 
 
 func _on_Idle_timeout():
-	speed = 30
+	speed = 50
 	$Timers/Patrol.start()

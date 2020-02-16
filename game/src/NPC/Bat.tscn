@@ -21,7 +21,7 @@ wait_time = 0.75
 one_shot = true
 
 [node name="Patrol" type="Timer" parent="Timers"]
-wait_time = 4.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Rays" type="Node2D" parent="."]
