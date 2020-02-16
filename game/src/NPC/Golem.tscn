@@ -13,6 +13,7 @@ extents = Vector2( 81.3858, 12.617 )
 extents = Vector2( 18.4476, 16.8229 )
 
 [node name="Golem" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="GolemAnimation" parent="." instance=ExtResource( 1 )]

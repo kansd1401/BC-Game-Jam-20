@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg2_strip.png" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageTileSetNoBkg_strip.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=6]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageOneWayTileSetNoBkg_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/TileSetsAndBackground/spr_VillageSpikesNoBkg_strip.png" type="Texture" id=8]
+[ext_resource path="res://src/NPC/Witch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/NPC/Wolf.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "spr_VillageTileSetNoBkg_strip.png 0"
@@ -2064,3 +2066,24 @@ format = 1
 
 [node name="Golem" parent="." instance=ExtResource( 3 )]
 position = Vector2( 469.299, 562.399 )
+
+[node name="Witch" parent="." instance=ExtResource( 9 )]
+position = Vector2( 824.158, 439.904 )
+
+[node name="Witch2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 975.209, 453.154 )
+
+[node name="Wolf" parent="." instance=ExtResource( 10 )]
+position = Vector2( 643.956, 506.155 )
+
+[node name="Wolf2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 843.9, 481.162 )
+
+[node name="Wolf3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 917.409, 465.725 )
+
+[node name="Wolf4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 607.937, 514.976 )
+
+[node name="Wolf5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 789.504, 486.307 )

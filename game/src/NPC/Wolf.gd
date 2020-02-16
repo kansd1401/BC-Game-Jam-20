@@ -148,8 +148,10 @@ func _attack_finished():
 
 
 func _on_Attack_timeout():
+	attacking = false
 	if inRange:
-		target.damage_player(damage)
+		if target:
+			target.damage_player(damage)
 
 func _on_Death_timeout():
 	queue_free()
