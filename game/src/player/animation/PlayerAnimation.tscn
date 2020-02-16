@@ -14,6 +14,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK1"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack1:frame")
 tracks/0/interp = 1
@@ -26,10 +27,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 11 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.43 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_1"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "ATTACK2"
-step = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack2:frame")
 tracks/0/interp = 1
@@ -42,9 +57,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 11, 22 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.29 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_2"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "ATTACK3"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack3:frame")
 tracks/0/interp = 1
@@ -56,6 +86,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 22, 29 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.13 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_3"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -117,7 +161,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 24.0
-step = 1.0
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Jump:frame")
 tracks/0/interp = 1
@@ -130,17 +174,49 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 24 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Jump:offset")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 14, 15 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 25, 0 ), Vector2( 8, 10 ), Vector2( 5, 15 ), Vector2( -2, 15 ), Vector2( -14, 15 ), Vector2( -20, 15 ), Vector2( -32, 15 ), Vector2( -49, 15 ), Vector2( -56, 10 ), Vector2( -67, 0 ) ]
+"times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 13.001, 14, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 25, 0 ],
+"method": "_jump_offset"
+}, {
+"args": [ 8, 10 ],
+"method": "_jump_offset"
+}, {
+"args": [ 5, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -2, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -14, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -20, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -32, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [  ],
+"method": "_fall_pause"
+}, {
+"args": [ -49, 15 ],
+"method": "_jump_offset"
+}, {
+"args": [ -56, 10 ],
+"method": "_jump_offset"
+}, {
+"args": [ -67, 0 ],
+"method": "_jump_offset"
+} ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -267,30 +343,31 @@ visible = false
 texture = ExtResource( 11 )
 offset = Vector2( 25, 0 )
 hframes = 25
+frame = 13
 
 [node name="JumpEffect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 25, 0 )
 texture = ExtResource( 4 )
 hframes = 25
-frame = 7
 
 [node name="Attack1" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
+frame = 1
 
 [node name="Attack2" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 22
+frame = 11
 
 [node name="Attack3" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 29
+frame = 22
 
 [node name="Dash" type="Sprite" parent="."]
 visible = false
@@ -303,7 +380,6 @@ frame = 7
 visible = false
 texture = ExtResource( 7 )
 hframes = 40
-frame = 39
 
 [node name="Leap" type="Sprite" parent="."]
 visible = false

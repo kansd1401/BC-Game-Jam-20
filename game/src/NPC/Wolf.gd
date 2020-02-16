@@ -6,18 +6,18 @@ var GRAVITY = 10
 var direction = 1
 var flipped = false
 var hp = 100
-var damage = 25
+var damage = 10
 var engaged = false
 var target = null
 var inRange = false
 var idling = false
 var attacking = false
 var walking = false
-onready var anim = $GolemAnimation/AnimationPlayer
-onready var spriteW = $GolemAnimation/Walk
-onready var spriteA = $GolemAnimation/Attack
-onready var spriteD = $GolemAnimation/Death
-onready var spriteI = $GolemAnimation/IdleE
+onready var anim = $WolfAnimation/AnimationPlayer
+onready var spriteW = $WolfAnimation/Run
+onready var spriteA = $WolfAnimation/Attack
+onready var spriteD = $WolfAnimation/Death
+onready var spriteI = $WolfAnimation/Idle
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
@@ -51,7 +51,7 @@ func _process(delta):
 			spriteW.hide()
 			spriteI.show()
 			spriteA.hide()
-			anim.play("IDLEE")
+			anim.play("IDLE")
 			attacking = false
 			idling = true
 			walking = false
@@ -59,12 +59,13 @@ func _process(delta):
 			spriteW.show()
 			spriteI.hide()
 			spriteA.hide()
-			anim.play("WALK")
+			anim.play("RUN")
 			attacking = false
 			idling = false
 			walking = true
 	if !$Rays/EdgeDetector.is_colliding():
 		if !engaged:
+			print("edge")
 			change_direction()
 		elif engaged && !$Rays/PlatformDetector.is_colliding():
 			speed = 0
@@ -72,6 +73,7 @@ func _process(delta):
 		velocity.y = 0
 	if $Rays/WallDetector.is_colliding():
 		if $Rays/WallDetector.get_collider().get("hp") == null:
+			print("wall")
 			change_direction()
 	move_and_slide(velocity)
 
@@ -114,7 +116,7 @@ func _on_Idle_timeout():
 
 func _on_Area2D_body_entered(body):
 	if body.has_method("damage_player"):
-		speed = 45
+		speed = 60
 		engaged = true
 		target = body
 		print("target detected")
@@ -135,7 +137,7 @@ func _on_Range_body_entered(body):
 
 func _on_Range_body_exited(body):
 	if body == target:
-		speed = 45
+		speed = 60
 		inRange = false
 
 func _attack_finished():
