@@ -8,7 +8,7 @@
 [ext_resource path="res://src/NPC/Animations/GolemAnimation.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Attack"
+resource_name = "ATTACK"
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -25,7 +25,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Death"
+resource_name = "DEATH"
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -42,7 +42,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "Idle"
+resource_name = "IDLE"
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -59,7 +59,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "IdleE"
+resource_name = "IDLEE"
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -76,7 +76,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "Walk"
+resource_name = "WALK"
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -109,25 +109,24 @@ hframes = 28
 visible = false
 texture = ExtResource( 3 )
 hframes = 6
+frame = 5
 
 [node name="Idle" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
 hframes = 12
-frame = 5
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 7
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 1 )
-anims/Death = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/IdleE = SubResource( 4 )
-anims/Walk = SubResource( 5 )
+anims/ATTACK = SubResource( 1 )
+anims/DEATH = SubResource( 2 )
+anims/IDLE = SubResource( 3 )
+anims/IDLEE = SubResource( 4 )
+anims/WALK = SubResource( 5 )
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
