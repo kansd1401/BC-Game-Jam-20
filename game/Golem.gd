@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
 var velocity = Vector2()
-var SPEED = 30
+var speed = 0
 var GRAVITY = 10
 var direction = 1
 var flipped = false
+var hp = 100
+var engaged = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -12,15 +14,16 @@ var flipped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
+	$Timers/Idle.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity.x = SPEED * direction
+	velocity.x = speed * direction
 	velocity.y += GRAVITY
 	if velocity.x == 0:
+		$GolemAnimation/Walk.hide()
 		$GolemAnimation/IdleE.show()
+		$GolemAnimation/Attack.hide()
 		$GolemAnimation/AnimationPlayer.play("IdleE")
 	else:
 		$GolemAnimation/Walk.show()
@@ -52,6 +55,11 @@ func change_direction():
 	$GolemAnimation/IdleE.flip_h = flipped
 	$GolemAnimation/Walk.flip_h = flipped
 
+func _on_Walk_timeout():
+	speed = 0
+	$Timers/Idle.start()
 
-func _on_Timer_timeout():
-	pass
+
+func _on_Idle_timeout():
+	speed = 30
+	$Timers/Walk.start()
