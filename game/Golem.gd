@@ -12,8 +12,13 @@ var inRange = false
 var idling = false
 var attacking = false
 var walking = false
-
+onready var anim = $GolemAnimation/AnimationPlayer
+onready var spriteW = $GolemAnimation/Walk
+onready var spriteA = $GolemAnimation/Attack
+onready var spriteD = $GolemAnimation/Death
+onready var spriteI = $GolemAnimation/IdleE
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$Timers/Idle.start()
 
@@ -33,27 +38,27 @@ func _process(delta):
 #	print(walking)
 	if hp > 0:
 		if inRange && velocity.x == 0 && !attacking:
-			$GolemAnimation/Walk.hide()
-			$GolemAnimation/IdleE.hide()
-			$GolemAnimation/Attack.show()
-			$GolemAnimation/AnimationPlayer.play("Attack")
+			spriteW.hide()
+			spriteI.hide()
+			spriteA.show()
+			anim.play("Attack")
 			$Timers/Attack.start()
 			attacking = true
 			idling = false
 			walking = false
 		elif velocity.x == 0 && !inRange && !idling:
-			$GolemAnimation/Walk.hide()
-			$GolemAnimation/IdleE.show()
-			$GolemAnimation/Attack.hide()
-			$GolemAnimation/AnimationPlayer.play("IdleE")
+			spriteW.hide()
+			spriteI.show()
+			spriteA.hide()
+			anim.play("IdleE")
 			attacking = false
 			idling = true
 			walking = false
 		elif velocity.x != 0 && !walking:
-			$GolemAnimation/Walk.show()
-			$GolemAnimation/IdleE.hide()
-			$GolemAnimation/Attack.hide()
-			$GolemAnimation/AnimationPlayer.play("Walk")
+			spriteW.show()
+			spriteI.hide()
+			spriteA.hide()
+			anim.play("Walk")
 			attacking = false
 			idling = false
 			walking = true
@@ -77,27 +82,25 @@ func change_direction():
 		flipped = false
 	else:
 		flipped = true
-	$GolemAnimation/Attack.flip_h = flipped
-	$GolemAnimation/Death.flip_h = flipped
-	$GolemAnimation/Idle.flip_h = flipped
-	$GolemAnimation/IdleE.flip_h = flipped
-	$GolemAnimation/Walk.flip_h = flipped
+	spriteA.flip_h = flipped
+	spriteD.flip_h = flipped
+	spriteI.flip_h = flipped
+	spriteW.flip_h = flipped
 
 func damage_npc(dam):
 	hp = hp-dam
 	if hp <= 0:
-		$GolemAnimation/Walk.hide()
-		$GolemAnimation/IdleE.hide()
-		$GolemAnimation/Attack.hide()
-		$GolemAnimation/Death.show()
-		$GolemAnimation/AnimationPlayer.play("Death")
+		spriteW.hide()
+		spriteI.hide()
+		spriteA.hide()
+		spriteD.show()
+		anim.play("Death")
 		$Timers/Death.start()
 
 func _on_Walk_timeout():
 	if !engaged:
 		speed = 0
 		$Timers/Idle.start()
-	damage_npc(100)
 
 
 func _on_Idle_timeout():
