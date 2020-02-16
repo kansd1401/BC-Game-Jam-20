@@ -23,7 +23,6 @@ func get_input():
 	if Input.is_action_pressed("ui_left"):
 		emit_signal("move_left")
 		last_input = "move_left"
-		print("EHHH")
 	elif Input.is_action_pressed("ui_right"):
 		emit_signal("move_right")
 		last_input = "move_right"
@@ -37,6 +36,5 @@ func get_input():
 		last_input = "attack"
 	else:
 		if last_input != "":
-			print("BUT WHY?")
 			emit_signal("idle")
 			last_input = ""

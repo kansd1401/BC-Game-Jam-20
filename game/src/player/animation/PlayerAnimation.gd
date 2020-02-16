@@ -1,8 +1,10 @@
 extends Node2D
 
 signal please_idle
+signal jump_startup_ended
 
 onready var player = $AnimationPlayer
+onready var effect_player = $EffectPlayer
 
 onready var animation_lookup = {
 	"IDLE": $Idle,
@@ -18,10 +20,14 @@ onready var animation_lookup = {
 	"TAUNT": $Taunt
 }
 
+onready var effect_lookup = {
+	"JUMP": $JumpEffect
+}
+
 var animation_speed = {
 	"IDLE": 1,
 	"WALK": 1,
-	"JUMP": 1,
+	"JUMP": 12,
 	"ATTACK1": 1.4,
 	"ATTACK2": 1,
 	"ATTACK3": 1,
@@ -47,8 +53,16 @@ func play(animation_name, direction):
 
 func _switch_to(animation_name):
 	if (animation_name != current_playing):
+		if effect_lookup.has(current_playing):
+			effect_lookup[current_playing].hide()
 		animation_lookup[current_playing].hide()
+		
 		animation_lookup[animation_name].show()
+		if effect_lookup.has(animation_name):
+			print("Found it")
+			effect_lookup[animation_name].show()
+			effect_player.set_speed_scale(animation_speed[animation_name])
+			effect_player.play(animation_name)
 		# Set scale based on animation here
 		player.set_speed_scale(animation_speed[animation_name])
 		player.play(animation_name)
@@ -68,8 +82,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ATTACK1" || anim_name == "ATTACK2" || anim_name == "ATTACK3":
 		_switch_to("IDLE")
 		emit_signal("please_idle")
+	
+	if anim_name == "JUMP":
+		_switch_to("IDLE")
+		emit_signal("please_idle")
 
-
+func _jump_startup_ended():
+	emit_signal("jump_startup_ended")
 
 
 
