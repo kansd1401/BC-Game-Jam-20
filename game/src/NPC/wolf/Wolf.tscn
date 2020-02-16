@@ -4,16 +4,16 @@
 [ext_resource path="res://src/NPC/wolf/Wolf.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.708, 13.0401 )
+extents = Vector2( 12.7257, 9.19835 )
 
 [node name="Wolf" type="KinematicBody2D"]
+position = Vector2( 118.588, 82.7509 )
 script = ExtResource( 2 )
 
 [node name="WolfAnimation" parent="." instance=ExtResource( 1 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.151093, -0.83072 )
+position = Vector2( -0.743561, 2.82284 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -32,13 +32,11 @@ one_shot = true
 [node name="Rays" type="Node2D" parent="."]
 
 [node name="EdgeDetector" type="RayCast2D" parent="Rays"]
-visible = false
 position = Vector2( 16, 2 )
 enabled = true
 cast_to = Vector2( 0, 12 )
 
 [node name="WallDetector" type="RayCast2D" parent="Rays"]
-visible = false
 position = Vector2( 15, 0 )
 enabled = true
 cast_to = Vector2( 10, 0 )

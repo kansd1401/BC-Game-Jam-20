@@ -1,15 +1,16 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/player/animation/PlayerAnimation.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/spr_Idle_strip.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Player/spr_Walk_strip.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Player/spr_Jump_strip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/spr_Jump_Cloud_strip.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Player/spr_Attack_strip.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Player/spr_Dash_strip.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Player/spr_Death_strip.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Player/spr_Leap_strip.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Player/spr_SpinAttack_strip.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Player/spr_Taunt_strip.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player/spr_Jump_Man_strip.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK1"
@@ -59,7 +60,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 length = 0.8
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Dash:frame")
@@ -87,7 +87,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Death:frame")
 tracks/0/interp = 1
@@ -117,8 +116,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-length = 2.4
-loop = true
+length = 24.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Jump:frame")
 tracks/0/interp = 1
@@ -126,7 +125,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.4 ),
+"times": PoolRealArray( 0, 24 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 24 ]
@@ -138,14 +137,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 7, 8, 9, 10, 11, 12, 13, 14, 15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 25, 0 ), Vector2( 8, 10 ), Vector2( -4, 15 ), Vector2( -13, 15 ), Vector2( -18, 15 ), Vector2( -26, 18 ), Vector2( -44, 15 ), Vector2( -50, 10 ), Vector2( -67, 0 ) ]
+"values": [ Vector2( 25, 0 ), Vector2( 8, 0 ), Vector2( 5, 0 ), Vector2( -2, 0 ), Vector2( -14, 0 ), Vector2( -20, 0 ), Vector2( -32, 0 ), Vector2( -49, 0 ), Vector2( -56, 0 ), Vector2( -67, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_jump_startup_ended"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Leap:frame")
 tracks/0/interp = 1
@@ -161,7 +173,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 length = 3.0
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spin:frame")
 tracks/0/interp = 1
@@ -188,7 +199,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=10]
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Taunt:frame")
 tracks/0/interp = 1
@@ -217,6 +227,23 @@ tracks/0/keys = {
 "values": [ 0, 7 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "JUMP"
+length = 24.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("JumpEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 24 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 24 ]
+}
+
 [node name="PlayerAnimation" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -224,25 +251,32 @@ script = ExtResource( 1 )
 visible = false
 texture = ExtResource( 2 )
 hframes = 16
+frame = 15
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 3 )
 hframes = 8
-frame = 1
+frame = 7
 
 [node name="Jump" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 4 )
-offset = Vector2( 25, 0 )
+texture = ExtResource( 11 )
+offset = Vector2( 8, 0 )
 hframes = 25
-frame = 3
+frame = 7
+
+[node name="JumpEffect" type="Sprite" parent="."]
+visible = false
+position = Vector2( 25, 0 )
+texture = ExtResource( 4 )
+hframes = 25
+frame = 7
 
 [node name="Attack1" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 11
 
 [node name="Attack2" type="Sprite" parent="."]
 visible = false
@@ -261,29 +295,35 @@ visible = false
 texture = ExtResource( 6 )
 offset = Vector2( -59, 0 )
 hframes = 8
-frame = 6
+frame = 7
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 7 )
 hframes = 40
+frame = 39
 
 [node name="Leap" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 8 )
 hframes = 40
+frame = 39
 
 [node name="Spin" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 9 )
+offset = Vector2( -23, 0 )
 hframes = 30
+frame = 16
 
 [node name="Taunt" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 10 )
 hframes = 18
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 14.0
 anims/ATTACK1 = SubResource( 1 )
 anims/ATTACK2 = SubResource( 2 )
 anims/ATTACK3 = SubResource( 3 )
@@ -295,4 +335,7 @@ anims/LEAP = SubResource( 8 )
 anims/SPIN = SubResource( 9 )
 anims/TAUNT = SubResource( 10 )
 anims/WALK = SubResource( 11 )
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+anims/JUMP = SubResource( 12 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
