@@ -1,16 +1,16 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://src/player/animation/PlayerAnimation.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player/spr_Idle_strip.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player/spr_Walk_strip.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Player/spr_Jump_Cloud_strip.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Player/spr_Attack_strip.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Player/spr_Dash_strip.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Player/spr_Death_strip.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Player/spr_Leap_strip.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Player/spr_SpinAttack_strip.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Player/spr_Taunt_strip.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Player/spr_Jump_Man_strip.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Player/spr_Leap_strip.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Player/spr_Jump_Man_strip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/spr_Dash_strip.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/spr_Death_strip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/spr_SpinAttack_strip.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/spr_Idle_strip.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/spr_Jump_Cloud_strip.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player/spr_Taunt_strip.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Player/spr_Attack_strip.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player/spr_Walk_strip.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Knight/noBKG_KnightAttack_strip.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK1"
@@ -22,10 +22,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.948376 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ 0, 11 ]
+"values": [  ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -324,77 +324,77 @@ tracks/0/keys = {
 }
 
 [node name="PlayerAnimation" type="Node2D"]
-script = ExtResource( 1 )
 
 [node name="Idle" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 hframes = 16
 frame = 15
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 3 )
+texture = ExtResource( 10 )
 hframes = 8
 frame = 7
 
 [node name="Jump" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 offset = Vector2( 25, 0 )
 hframes = 25
+frame = 13
 
 [node name="JumpEffect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 25, 0 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 hframes = 25
 
 [node name="Attack1" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 5 )
-hframes = 30
+texture = ExtResource( 11 )
+hframes = 22
+frame = 11
 
 [node name="Attack2" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
+texture = ExtResource( 11 )
 hframes = 30
 frame = 11
 
 [node name="Attack3" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 hframes = 30
 frame = 22
 
 [node name="Dash" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 offset = Vector2( -59, 0 )
 hframes = 8
 frame = 7
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 7 )
+texture = ExtResource( 4 )
 hframes = 40
 
 [node name="Leap" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 8 )
+texture = ExtResource( 1 )
 hframes = 40
 frame = 39
 
 [node name="Spin" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 9 )
+texture = ExtResource( 5 )
 offset = Vector2( -23, 0 )
 hframes = 30
 frame = 16
 
 [node name="Taunt" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 hframes = 18
 frame = 17
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://Assets/TileSetsAndBackground/spr_Sky_strip.png" type="Texture" id=1]
 [ext_resource path="res://src/player/animation/PlayerAnimation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Controller.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/player/Player.gd" type="Script" id=4]
@@ -7,22 +8,23 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.9371, 15.93 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 25.0957, 3.4831 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.35597, 12.0449 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 17.723, 8.47748 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4.88031, 12.9962 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 22.4796, 6.81269 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 4 )
 
 [node name="Controller" parent="." instance=ExtResource( 3 )]
@@ -42,10 +44,12 @@ cast_to = Vector2( 0, 25 )
 [node name="CheckLeftGround" type="RayCast2D" parent="."]
 position = Vector2( -6.852, 4.48 )
 enabled = true
-cast_to = Vector2( 0, 25 )
+cast_to = Vector2( 0, 26 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
 
 [node name="HitBoxes" type="Node2D" parent="."]
 
@@ -54,18 +58,18 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack1"]
 position = Vector2( 15.9345, 9.51312 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="Attack2" type="Area2D" parent="HitBoxes"]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack2"]
 position = Vector2( 21.6423, 15.9345 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/Attack2"]
 position = Vector2( 6.89702, -4.51873 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Attack3" type="Area2D" parent="HitBoxes"]
 visible = false
@@ -73,11 +77,18 @@ position = Vector2( 43.5225, 39.4794 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack3"]
 position = Vector2( -26.1611, -26.3989 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/Attack3"]
 position = Vector2( -46.1387, -46.1386 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 958.771, 537.01 )
+scale = Vector2( 4.05491, 4.03334 )
+texture = ExtResource( 1 )
 [connection signal="land_jump" from="." to="PlayerAnimation" method="_on_Player_land_jump"]
 [connection signal="play" from="." to="PlayerAnimation" method="_on_Player_play"]
 [connection signal="start_fall" from="." to="PlayerAnimation" method="_on_Player_start_fall"]
@@ -92,4 +103,5 @@ shape = SubResource( 3 )
 [connection signal="fall_paused" from="PlayerAnimation" to="." method="_on_PlayerAnimation_fall_paused"]
 [connection signal="jump_startup_ended" from="PlayerAnimation" to="." method="_on_PlayerAnimation_jump_startup_ended"]
 [connection signal="please_idle" from="PlayerAnimation" to="." method="_on_PlayerAnimation_please_idle"]
+[connection signal="revive" from="PlayerAnimation" to="." method="_on_PlayerAnimation_revive"]
 [connection signal="timeout" from="Input_Buffer" to="." method="_on_Input_Buffer_timeout"]

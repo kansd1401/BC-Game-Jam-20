@@ -13,7 +13,8 @@ extents = Vector2( 117.837, 34.1035 )
 extents = Vector2( 81.0461, 16.8229 )
 
 [node name="Witch" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,7 +39,6 @@ wait_time = 1.1
 one_shot = true
 
 [node name="Death" type="Timer" parent="Timers"]
-wait_time = 2.0
 one_shot = true
 
 [node name="Rays" type="Node2D" parent="."]

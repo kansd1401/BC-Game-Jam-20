@@ -23,6 +23,7 @@ var current_state = {
 var current_attack = 1
 
 export var hp = 100
+var hp_max = hp
 export var speed = 4
 export var jump_strength = -215
 export var max_speed = 100
@@ -32,6 +33,7 @@ export var attack_damage_2 = 60
 export var attack_damage_3 = 80
 
 func _ready():
+	_on_PlayerAnimation_please_idle()
 	input_buffer.timer.set_wait_time(0.2)
 
 func init(x, y):
@@ -61,7 +63,7 @@ func _process(delta):
 		move_and_slide(movement)
 		
 		if $CheckGround.is_enabled():
-			if $CheckGround.get_collider():
+			if $CheckGround.is_colliding():
 				lock_horizontal = true
 				reset_horizontal_movement()
 				$PlayerAnimation._fall_resume()
@@ -69,9 +71,12 @@ func _process(delta):
 				$CheckLeftGround.set_enabled(true)
 		
 		if $CheckLeftGround.is_enabled():
-			if !$CheckLeftGround.get_collider():
+			$CheckLeftGround.force_raycast_update()
+			if !$CheckLeftGround.is_colliding():
 				current_state.mode = "JUMP"
-				emit_signal("start_fall")
+				print("Start fall puh-lease")
+				emit_signal("start_fall", current_state.facing)
+				$CheckLeftGround.set_enabled(false)
 	else:
 		pass
 
@@ -131,11 +136,9 @@ func _on_Controller_move_right():
 func _on_Input_Buffer_timeout():
 	input_buffer.input = ""
 
-
 func _on_Controller_idle():
 	if current_state.mode == "MOVE_LEFT" || current_state.mode == "MOVE_RIGHT":
 		current_state.mode = "IDLE"
-
 
 func _on_PlayerAnimation_please_idle():
 	lock_horizontal = false
@@ -150,6 +153,12 @@ func _on_PlayerAnimation_please_idle():
 		return
 	
 	current_attack = 1
+
+func _on_PlayerAnimation_revive():
+	hp = hp_max
+	_on_PlayerAnimation_please_idle()
+	is_dead = false
+	$CollisionShape2D.set_disabled(false)
 
 func damage_player(dam):
 	hp -= dam

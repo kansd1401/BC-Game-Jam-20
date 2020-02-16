@@ -6,13 +6,14 @@ var GRAVITY = 10
 var direction = 1
 var flipped = false
 var hp = 100
-var damage = 25
+var damage = 10
 var engaged = false
 var target = null
 var inRange = false
 var idling = false
 var attacking = false
 var walking = false
+var dead = false
 onready var anim = $GolemAnimation/AnimationPlayer
 onready var spriteW = $GolemAnimation/Walk
 onready var spriteA = $GolemAnimation/Attack
@@ -42,6 +43,7 @@ func _process(delta):
 			spriteW.hide()
 			spriteI.hide()
 			spriteA.show()
+			anim.stop()
 			anim.play("ATTACK")
 			$Timers/Attack.start()
 			attacking = true
@@ -92,7 +94,12 @@ func change_direction():
 
 func damage_npc(dam):
 	hp = hp-dam
-	if hp <= 0:
+	if !dead:
+		$GolemAnimation.hide()
+		$Timers/Hit.start()
+		$hit.show()
+	if hp <= 0 && !dead:
+		dead = true
 		spriteW.hide()
 		spriteI.hide()
 		spriteA.hide()
@@ -146,8 +153,16 @@ func _attack_finished():
 
 
 func _on_Attack_timeout():
+	attacking = false
 	if inRange:
-		target.damage_player(damage)
+		if target:
+			target.damage_player(damage)
 
 func _on_Death_timeout():
 	queue_free()
+
+
+func _on_Hit_timeout():
+	attacking = false
+	$hit.hide()
+	$GolemAnimation.show()
