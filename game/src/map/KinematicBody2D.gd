@@ -8,3 +8,5 @@ func _ready():
 func _process(delta):
 	vel.y += 10
 	move_and_slide(vel)
+
+

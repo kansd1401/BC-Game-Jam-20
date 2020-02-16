@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 signal play(animation, direction)
+signal land_jump
 
 var movement = Vector2()
-var gravity = 400
+var gravity = 20
+var hp = 100
 
 onready var input_buffer = {
 	"input": "",
@@ -19,6 +21,7 @@ var current_state = {
 var current_attack = 1
 
 export var speed = 4
+export var jump_strength = -160
 export var max_speed = 100
 export var max_fall = 800
 
@@ -38,6 +41,8 @@ func _process(delta):
 		movement.x += speed
 		current_state.facing = "RIGHT"
 		emit_signal("play", "WALK", current_state.facing)
+	if current_state.mode == "JUMP":
+		movement.y -= 18
 	if current_state.mode == "ATTACK":
 		movement = Vector2()
 		emit_signal("play", "ATTACK1", current_state.facing)
@@ -45,8 +50,14 @@ func _process(delta):
 		emit_signal("play", "IDLE", current_state.facing)
 		movement = Vector2()
 	movement.x = clamp(movement.x, -max_speed, max_speed)
-	movement.y = clamp(gravity, -max_fall, max_fall)
+	movement.y += clamp(gravity, -max_fall, max_fall)
 	move_and_slide(movement)
+	
+	if $CheckGround.is_enabled():
+		if $CheckGround.get_collider():
+			print("DISABLE ME")
+			$PlayerAnimation._fall_resume()
+			$CheckGround.set_enabled(false)
 	
 
 # Collision will have to be managed by player state, and at times will change a little wildly.
@@ -66,9 +77,15 @@ func _on_Controller_attack():
 		current_state.mode = "ATTACK"
 
 func _on_Controller_jump():
-	if current_state.mode != "IDLE":
+	if current_state.mode != "IDLE" && current_state.mode != "MOVE_LEFT" && current_state.mode != "MOVE_RIGHT":
 		input_buffer.input = "JUMP"
 		input_buffer.timer.start()
+	else:
+		current_state.mode = "JUMP"
+		emit_signal("play", "JUMP", current_state.facing)
+
+func _on_PlayerAnimation_jump_startup_ended():
+	movement.y += jump_strength
 
 # Movement keys will not buffer, but can be used to reset
 #	the buffer.
@@ -107,3 +124,11 @@ func _on_PlayerAnimation_please_idle():
 		return
 	
 	current_attack = 1
+
+func damage_player():
+	pass
+
+
+
+func _on_PlayerAnimation_fall_paused():
+	$CheckGround.set_enabled(true)

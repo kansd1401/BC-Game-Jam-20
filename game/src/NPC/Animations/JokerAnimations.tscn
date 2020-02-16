@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ 0, 4 ]
 }
 
-[node name="JokerAnimations" type="Node2D"]
+[node name="JokerAnimation" type="Node2D"]
 
 [node name="Attack" type="Sprite" parent="."]
 visible = false
@@ -63,6 +63,7 @@ texture = ExtResource( 1 )
 hframes = 42
 
 [node name="Death" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 hframes = 31
 frame = 10
