@@ -96,7 +96,6 @@ func _fall_pause():
 	emit_signal("fall_paused")
 
 func _fall_resume():
-	print("Am I be called?")
 	$AnimationPlayer.play()
 
 
