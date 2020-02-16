@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/player/animation/PlayerAnimation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/player/Controller.tscn" type="PackedScene" id=3]
@@ -6,6 +6,21 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.9371, 15.93 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 25.0957, 3.4831 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5.35597, 12.0449 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 17.723, 8.47748 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4.88031, 12.9962 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 22.4796, 6.81269 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 4 )
@@ -26,6 +41,38 @@ cast_to = Vector2( 0, 25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="HitBoxes" type="Node2D" parent="."]
+
+[node name="Attack1" type="Area2D" parent="HitBoxes"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack1"]
+position = Vector2( 15.9345, 9.51312 )
+shape = SubResource( 6 )
+
+[node name="Attack2" type="Area2D" parent="HitBoxes"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack2"]
+position = Vector2( 21.6423, 15.9345 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/Attack2"]
+position = Vector2( 6.89702, -4.51873 )
+shape = SubResource( 5 )
+
+[node name="Attack3" type="Area2D" parent="HitBoxes"]
+visible = false
+position = Vector2( 43.5225, 39.4794 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack3"]
+position = Vector2( -26.1611, -26.3989 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/Attack3"]
+position = Vector2( -46.1387, -46.1386 )
+shape = SubResource( 3 )
 [connection signal="land_jump" from="." to="PlayerAnimation" method="_on_Player_land_jump"]
 [connection signal="play" from="." to="PlayerAnimation" method="_on_Player_play"]
 [connection signal="attack" from="Controller" to="." method="_on_Controller_attack"]

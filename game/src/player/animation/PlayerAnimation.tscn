@@ -14,6 +14,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK1"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack1:frame")
 tracks/0/interp = 1
@@ -26,10 +27,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0, 11 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.43 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_1"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "ATTACK2"
-step = 0.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack2:frame")
 tracks/0/interp = 1
@@ -42,9 +57,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 11, 22 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.29 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_2"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "ATTACK3"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Attack3:frame")
 tracks/0/interp = 1
@@ -56,6 +86,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 22, 29 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.13 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_attack_impact_3"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -309,22 +353,21 @@ hframes = 25
 frame = 7
 
 [node name="Attack1" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 11
+frame = 5
 
 [node name="Attack2" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 22
+frame = 14
 
 [node name="Attack3" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 5 )
 hframes = 30
-frame = 29
+frame = 23
 
 [node name="Dash" type="Sprite" parent="."]
 visible = false

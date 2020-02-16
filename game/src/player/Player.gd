@@ -135,7 +135,5 @@ func damage_player(dam):
 	hp -= dam
 	print(dam)
 
-
-
 func _on_PlayerAnimation_fall_paused():
 	$CheckGround.set_enabled(true)

@@ -105,7 +105,14 @@ func _jump_offset(x, y):
 		x_offset *= -1
 	$Jump.offset = Vector2(x_offset, y_offset)
 
+func _attack_impact_1():
+	pass
 
+func _attack_impact_2():
+	pass
+
+func _attack_impact_3():
+	pass
 
 
 
