@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Witch/noBKG_WitchWalk_strip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Witch/noBKG_WitchIdle_strip.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Witch/noBKG_WitchDeath_strip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Witch/noBKG_WitchThrow_strip.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ATTACK"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 17 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DEATH"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Death:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 11 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLEE"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("IdleE:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "WALK"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[node name="WitchAnimation" type="Node2D"]
+
+[node name="Attack" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+hframes = 18
+
+[node name="Death" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 12
+frame = 6
+
+[node name="IdleE" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+hframes = 7
+
+[node name="Walk" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+hframes = 8
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ATTACK = SubResource( 1 )
+anims/DEATH = SubResource( 2 )
+anims/IDLEE = SubResource( 3 )
+anims/WALK = SubResource( 4 )
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

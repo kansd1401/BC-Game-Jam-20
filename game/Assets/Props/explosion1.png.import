@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/noBKG_WitchDeath_strip.png-60effd16d29a811ab548ddbe7af2a20f.stex"
+path="res://.import/explosion1.png-59026946af1c3e7fe518c15700b74500.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Witch/noBKG_WitchDeath_strip.png"
-dest_files=[ "res://.import/noBKG_WitchDeath_strip.png-60effd16d29a811ab548ddbe7af2a20f.stex" ]
+source_file="res://Assets/Props/explosion1.png"
+dest_files=[ "res://.import/explosion1.png-59026946af1c3e7fe518c15700b74500.stex" ]
 
 [params]
 

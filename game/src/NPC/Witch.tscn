@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/NPC/Witch.gd" type="Script" id=1]
+[ext_resource path="res://src/NPC/Animations/WitchAnimation.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.708, 18.4092 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 117.837, 34.1035 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 81.0461, 16.8229 )
+
+[node name="Witch" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.088707, -6.82561 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Idle" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Walk" type="Timer" parent="Timers"]
+wait_time = 6.0
+one_shot = true
+
+[node name="Attack" type="Timer" parent="Timers"]
+wait_time = 1.1
+one_shot = true
+
+[node name="Death" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="EdgeDetector" type="RayCast2D" parent="Rays"]
+position = Vector2( 16, 2 )
+enabled = true
+cast_to = Vector2( 0, 12 )
+
+[node name="WallDetector" type="RayCast2D" parent="Rays"]
+position = Vector2( 15, 0 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[node name="PlatformDetector" type="RayCast2D" parent="Rays"]
+position = Vector2( 16, 2 )
+enabled = true
+
+[node name="Targetting" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Targetting"]
+position = Vector2( -0.145981, 11.3208 )
+shape = SubResource( 2 )
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2( 1.52588e-05, -5.17654 )
+shape = SubResource( 3 )
+
+[node name="WitchAnimation" parent="." instance=ExtResource( 2 )]
+
+[node name="Position2D" type="Position2D" parent="."]
+[connection signal="timeout" from="Timers/Idle" to="." method="_on_Idle_timeout"]
+[connection signal="timeout" from="Timers/Walk" to="." method="_on_Walk_timeout"]
+[connection signal="timeout" from="Timers/Attack" to="." method="_on_Attack_timeout"]
+[connection signal="timeout" from="Timers/Death" to="." method="_on_Death_timeout"]
+[connection signal="body_entered" from="Targetting" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Targetting" to="." method="_on_Targetting_body_exited"]
+[connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]
