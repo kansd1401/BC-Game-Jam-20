@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/Witch/noBKG_WitchWalk_strip.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Witch/noBKG_WitchIdle_strip.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Witch/noBKG_WitchDeath_strip.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Witch/noBKG_WitchThrow_strip.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Golem/noBKG_GolemAttack_strip.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Golem/noBKG_GolemDeath_strip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Golem/noBKG_GolemIdleExtra_strip.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Golem/noBKG_GolemIdle_strip.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Golem/noBKG_GolemWalk_strip.png" type="Texture" id=5]
+[ext_resource path="res://src/NPC/Animations/GolemAnimation.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ATTACK"
@@ -19,11 +21,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 17 ]
+"values": [ 0, 15 ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "DEATH"
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Death:frame")
@@ -32,15 +35,32 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 27 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLE"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 11 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 resource_name = "IDLEE"
-length = 0.7
+length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("IdleE:frame")
@@ -49,15 +69,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
+"times": PoolRealArray( 0.0308375, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 6 ]
+"values": [ 0, 5 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 resource_name = "WALK"
-length = 0.8
+length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Walk:frame")
@@ -66,41 +86,47 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 7 ]
+"values": [ 0, 6 ]
 }
 
-[node name="WitchAnimation" type="Node2D"]
+[node name="GolemAnimation" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Attack" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
-hframes = 18
+texture = ExtResource( 1 )
+hframes = 16
 
 [node name="Death" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 4 )
-hframes = 12
-frame = 6
+texture = ExtResource( 2 )
+hframes = 28
 
 [node name="IdleE" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 3 )
-hframes = 7
+hframes = 6
+frame = 5
+
+[node name="Idle" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 12
 
 [node name="Walk" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 2 )
-hframes = 8
-frame = 4
+texture = ExtResource( 5 )
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ATTACK = SubResource( 1 )
 anims/DEATH = SubResource( 2 )
-anims/IDLEE = SubResource( 3 )
-anims/WALK = SubResource( 4 )
+anims/IDLE = SubResource( 3 )
+anims/IDLEE = SubResource( 4 )
+anims/WALK = SubResource( 5 )
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
