@@ -22,7 +22,7 @@ var current_state = {
 
 var current_attack = 1
 
-export var hp = 100
+export var hp = 200
 var hp_max = hp
 export var speed = 4
 export var jump_strength = -215
