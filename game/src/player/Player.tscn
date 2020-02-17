@@ -54,14 +54,12 @@ smoothing_enabled = true
 [node name="HitBoxes" type="Node2D" parent="."]
 
 [node name="Attack1" type="Area2D" parent="HitBoxes"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack1"]
 position = Vector2( 15.9345, 9.51312 )
 shape = SubResource( 2 )
 
 [node name="Attack2" type="Area2D" parent="HitBoxes"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack2"]
 position = Vector2( 21.6423, 15.9345 )
@@ -72,7 +70,6 @@ position = Vector2( 6.89702, -4.51873 )
 shape = SubResource( 4 )
 
 [node name="Attack3" type="Area2D" parent="HitBoxes"]
-visible = false
 position = Vector2( 43.5225, 39.4794 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/Attack3"]
