@@ -22,6 +22,7 @@ onready var spriteI = $GolemAnimation/IdleE
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	randomize()
 	$Timers/Idle.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -110,12 +111,14 @@ func damage_npc(dam):
 func _on_Walk_timeout():
 	if !engaged:
 		speed = 0
+		$Timers/Idle.wait_time = range(1,5)[randi()%range(1,5).size()]
 		$Timers/Idle.start()
 
 
 func _on_Idle_timeout():
 	if !engaged:
 		speed = 30
+		$Timers/Walk.wait_time = range(5,10)[randi()%range(5,10).size()]
 		$Timers/Walk.start()
 
 
