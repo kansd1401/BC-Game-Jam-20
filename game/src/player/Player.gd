@@ -76,7 +76,6 @@ func _process(delta):
 				current_state.mode = "JUMP"
 				if movement.y >= 0:
 					movement.y = gravity
-				print("Start fall puh-lease")
 				emit_signal("start_fall", current_state.facing)
 				$CheckLeftGround.set_enabled(false)
 	else:
@@ -110,7 +109,6 @@ func _on_Controller_jump():
 		emit_signal("play", "JUMP", current_state.facing)
 
 func _on_PlayerAnimation_jump_startup_ended():
-	print("And jump")
 	movement.y += jump_strength
 
 # Movement keys will not buffer, but can be used to reset
