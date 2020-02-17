@@ -9,9 +9,9 @@ Prevail
 Compassion
 Pack
 
-## Submission
+## Usage
 
-https://event.hackhub.com/event/BCGJ2020
+Download the appropriate file from the builds folder.  Supports Windows, Linux, and Mac.  Single exectuable for the first two, while the Mac build is contained in a zip archive.
 
 ## Notes
 
