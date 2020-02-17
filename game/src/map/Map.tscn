@@ -1644,7 +1644,7 @@ extents = Vector2( 32.9883, 282.389 )
 [node name="Map" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 602.533, 279.202 )
+position = Vector2( 87.0076, 294.565 )
 z_index = 1
 speed = 5
 jump_strength = -216
