@@ -6,8 +6,11 @@ Prevail
 
 ### Sub-Themes
 
-Compassion
-Pack
+- Compassion
+- Pack
+
+## Screenshot
+![Player Start](screenshots/gamethumb.png)
 
 ## Usage
 
@@ -30,6 +33,6 @@ The hammer sits on the ground for 6 frames before the PC reaches it.
 - Attack (DONE)
 - Dash (DONE)
 - Death (DONE)
-- Leap [Holy Hell]
+- Leap (DONE)
 - Spin (DONE)
 - Taunt (DONE)
